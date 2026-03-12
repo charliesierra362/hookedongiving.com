@@ -20,6 +20,7 @@
     .water-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 0.04; }
     .water-bg svg { width: 100%; height: 100%; }
 
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -33,12 +34,19 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; }
+    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; transition: background 0.2s !important; }
     .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--cream); }
+    .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(11,26,43,0.98); backdrop-filter: blur(14px); z-index: 99; padding: 2rem; flex-direction: column; gap: 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.15); }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { text-decoration: none; color: var(--text-light); font-size: 1rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 
+    /* HERO */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(30,73,118,0.5) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 30%, rgba(78,112,89,0.25) 0%, transparent 60%), linear-gradient(175deg,#0b1a2b 0%,#0e2540 40%,#0a1520 100%); }
-    .hero-photo { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&q=80&auto=format&fit=crop'); background-size: cover; background-position: center 60%; opacity: 0.18; }
+    /* ── photo1.jpg used as subtle hero background ── */
+    .hero-photo { position: absolute; inset: 0; background-image: url('photo1.jpg'); background-size: cover; background-position: center 60%; opacity: 0.18; }
     .hero-ripples { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .ripple { position: absolute; border-radius: 50%; border: 1px solid rgba(201,168,76,0.12); animation: expand 8s ease-out infinite; transform: translate(-50%,-50%) scale(0); }
     .ripple:nth-child(1){left:50%;top:65%;width:300px;height:100px;animation-delay:0s}
@@ -71,15 +79,16 @@
     .hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
     @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-    /* PHOTO STRIP */
-    .photo-strip{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;height:400px;overflow:hidden}
+    /* PHOTO STRIP — photo1.jpg left, photo2.jpg right */
+    .photo-strip{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;height:420px;overflow:hidden}
     .photo-pane{position:relative;overflow:hidden}
     .photo-pane img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;filter:brightness(.68) saturate(.85)}
     .photo-pane:hover img{transform:scale(1.05)}
-    .photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,26,43,.75) 0%,rgba(11,26,43,.1) 60%);display:flex;align-items:flex-end;padding:2rem}
-    .photo-caption{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(242,237,227,.8)}
-    .photo-sep{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(201,168,76,.25);z-index:2}
+    .photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,26,43,.75) 0%,rgba(11,26,43,.05) 55%);display:flex;align-items:flex-end;padding:2rem}
+    .photo-caption{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(242,237,227,.85)}
+    .photo-sep{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(201,168,76,.3);z-index:2}
 
+    /* SHARED */
     section{position:relative;z-index:1}
     .section-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
     .section-label{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
@@ -88,6 +97,15 @@
     .section-body{font-size:1.05rem;line-height:1.85;color:var(--text-light);max-width:680px}
     .divider-gold{width:60px;height:2px;background:var(--gold);margin:1.5rem 0;opacity:.7}
 
+    /* DEADLINE BANNER */
+    .deadline-banner{background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.08),rgba(201,168,76,.15));border-top:1px solid rgba(201,168,76,.25);border-bottom:1px solid rgba(201,168,76,.25);padding:2rem 0}
+    .deadline-banner-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .deadline-item{text-align:center}
+    .deadline-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold)}
+    .deadline-lbl{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+    .deadline-pipe{width:1px;height:50px;background:rgba(201,168,76,.25)}
+
+    /* ABOUT */
     #about{padding:8rem 0 6rem;background:linear-gradient(180deg,var(--navy) 0%,#0d2035 100%)}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
     .about-card{background:linear-gradient(135deg,rgba(30,73,118,.4) 0%,rgba(78,112,89,.2) 100%);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:3rem;text-align:center;position:relative;overflow:hidden}
@@ -98,10 +116,11 @@
     .about-stat{padding:1.2rem;background:rgba(255,255,255,.04);border-radius:3px;border:1px solid rgba(201,168,76,.12)}
     .about-stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold)}
     .about-stat-lbl{font-size:.68rem;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase;margin-top:.2rem}
-    .hope-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.6rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-light);margin-bottom:1.5rem;text-decoration:none;transition:background .2s}
+    .hope-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.6rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-light);text-decoration:none;transition:background .2s}
     .hope-badge:hover{background:rgba(78,112,89,.35)}
     .hope-badge svg{fill:var(--sage-light)}
 
+    /* TOURNAMENT */
     #tournament{padding:7rem 0;background:#0a1822}
     .tournament-header{text-align:center;max-width:700px;margin:0 auto 4rem}
     .tournament-header .divider-gold{margin:1.5rem auto}
@@ -113,13 +132,14 @@
     .step-icon{font-size:1.8rem;margin-bottom:1rem}
     .step-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.8rem;color:var(--cream)}
     .step-desc{font-size:.9rem;line-height:1.7;color:var(--text-muted)}
-    .step-highlight{display:inline-block;color:var(--gold);font-weight:600}
+    .step-highlight{color:var(--gold);font-weight:600}
     .bid-callout{background:linear-gradient(135deg,rgba(30,73,118,.35),rgba(17,45,74,.5));border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:3rem 3.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
     .bid-callout-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:.6rem}
     .bid-callout-details{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:1.2rem}
     .bid-detail{font-size:.85rem;color:var(--text-muted)}
     .bid-detail strong{color:var(--cream);font-weight:600;display:block;margin-bottom:.15rem;font-size:.95rem}
 
+    /* SPONSORSHIP */
     #sponsorship{padding:7rem 0;background:linear-gradient(180deg,#0a1822 0%,var(--navy) 100%)}
     .sponsorship-header{text-align:center;max-width:680px;margin:0 auto 4rem}
     .sponsorship-header .divider-gold{margin:1.5rem auto}
@@ -148,7 +168,8 @@
     .tier-silver .tier-perks li::before{color:#a0aabd}
     .tier-featured-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.58rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:.3rem 1rem;border-radius:0 0 4px 4px}
 
-    #gala{padding:7rem 0;background:#09151f;overflow:hidden}
+    /* GALA */
+    #gala{padding:7rem 0;background:#09151f}
     .gala-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
     .gala-card-bg{background:linear-gradient(145deg,rgba(30,73,118,.35),rgba(78,112,89,.15));border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:3rem}
     .gala-date-display{text-align:center;padding:2.5rem 0;border-bottom:1px solid rgba(201,168,76,.15);margin-bottom:2rem}
@@ -165,13 +186,7 @@
     .amenity-dot{width:6px;height:6px;border-radius:50%;background:var(--sage-light);flex-shrink:0}
     .coming-soon-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.5rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-light);margin-top:2rem;margin-bottom:1.5rem}
 
-    .deadline-banner{background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.08),rgba(201,168,76,.15));border-top:1px solid rgba(201,168,76,.25);border-bottom:1px solid rgba(201,168,76,.25);padding:2rem 0;text-align:center}
-    .deadline-banner-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
-    .deadline-item{text-align:center}
-    .deadline-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold)}
-    .deadline-lbl{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
-    .deadline-pipe{width:1px;height:50px;background:rgba(201,168,76,.25)}
-
+    /* BENEFICIARY */
     #beneficiary{padding:7rem 0;background:var(--navy)}
     .beneficiary-inner{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:center}
     .beneficiary-quote{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;line-height:1.55;color:var(--cream);padding-left:2rem;border-left:3px solid var(--gold)}
@@ -179,6 +194,7 @@
     .mission-word{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--navy);-webkit-text-stroke:1px rgba(201,168,76,.4);line-height:1;transition:color .3s}
     .mission-word.active,.mission-word:hover{color:var(--gold);-webkit-text-stroke-color:var(--gold)}
 
+    /* CONTACT */
     #contact{padding:6rem 0;background:#07121b}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
     .contact-links{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
@@ -196,6 +212,7 @@
     .action-sub{font-size:.75rem;color:var(--text-muted);margin-top:.15rem}
     .action-arrow{margin-left:auto;color:var(--gold);font-size:1.2rem}
 
+    /* FOOTER */
     footer{background:#040d15;padding:2.5rem 0;text-align:center;border-top:1px solid rgba(201,168,76,.12)}
     .footer-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
     .footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
@@ -204,22 +221,17 @@
     .footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
     .footer-links a{text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);transition:color .2s}
     .footer-links a:hover{color:var(--gold)}
-    .footer-bottom{font-size:.75rem;color:rgba(122,143,163,.5);letter-spacing:.05em}
+    .footer-bottom{font-size:.75rem;color:rgba(122,143,163,.5)}
     .footer-bottom a{color:rgba(201,168,76,.5);text-decoration:none}
 
+    /* COUNTDOWN */
     .countdown{display:flex;gap:1.5rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
     .countdown-block{text-align:center;min-width:65px}
     .countdown-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
     .countdown-unit{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:.3rem}
     .countdown-sep{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,168,76,.3);padding-top:.25rem}
 
-    .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
-    .nav-toggle span{display:block;width:24px;height:2px;background:var(--cream);transition:all .3s}
-    .mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(11,26,43,.98);backdrop-filter:blur(14px);z-index:99;padding:2rem;flex-direction:column;gap:1.5rem;border-bottom:1px solid rgba(201,168,76,.15)}
-    .mobile-nav.open{display:flex}
-    .mobile-nav a{text-decoration:none;color:var(--text-light);font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
-    .mobile-nav a:hover{color:var(--gold)}
-
+    /* RESPONSIVE */
     @media(max-width:900px){
       .nav-links{display:none}.nav-toggle{display:flex}
       .about-grid,.gala-grid,.contact-grid,.beneficiary-inner{grid-template-columns:1fr;gap:3rem}
@@ -281,7 +293,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-photo"></div>
+  <div class="hero-photo"></div><!-- uses photo1.jpg -->
   <div class="hero-ripples">
     <div class="ripple"></div><div class="ripple"></div><div class="ripple"></div><div class="ripple"></div>
   </div>
@@ -344,7 +356,7 @@
         <div class="divider-gold"></div>
         <p class="section-body">Join us for an unforgettable day of philanthropy on Wyoming's legendary North Platte River. Cast your line alongside experienced local guides during the tournament, then join us for an elegant evening gala featuring dinner, live music, a live auction, and exciting raffles.</p>
         <p class="section-body" style="margin-top:1.2rem">Every bid, every ticket, every donation goes directly to empowering victims and inspiring hope across Converse and Niobrara Counties through the work of the Hope Center.</p>
-        <br>
+        <br><br>
         <a href="https://wyohopecenter.org" target="_blank" class="hope-badge">
           <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           Benefiting the Hope Center · wyohopecenter.org
@@ -367,16 +379,20 @@
   </div>
 </section>
 
-<!-- PHOTO STRIP -->
+<!-- PHOTO STRIP — photo1.jpg on left, photo2.jpg on right -->
 <div class="photo-strip">
   <div class="photo-sep"></div>
   <div class="photo-pane">
-    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=900&q=80&auto=format&fit=crop" alt="Fly fisherman wading a river at sunrise" loading="lazy" />
-    <div class="photo-overlay"><span class="photo-caption">Blue-ribbon waters of the North Platte River</span></div>
+    <img src="photo1.jpg" alt="Fly fishing on the North Platte River" loading="lazy" />
+    <div class="photo-overlay">
+      <span class="photo-caption">Blue-ribbon waters of the North Platte River</span>
+    </div>
   </div>
   <div class="photo-pane">
-    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop" alt="Fly fishing rod and cast line over a scenic river" loading="lazy" />
-    <div class="photo-overlay"><span class="photo-caption">Casper, Wyoming · June 26, 2026</span></div>
+    <img src="photo2.jpg" alt="Fly fishing in Casper Wyoming" loading="lazy" />
+    <div class="photo-overlay">
+      <span class="photo-caption">Casper, Wyoming · June 26, 2026</span>
+    </div>
   </div>
 </div>
 
@@ -400,13 +416,13 @@
         <div class="step-num">02</div>
         <div class="step-icon">🏆</div>
         <div class="step-title">Winners Selected</div>
-        <p class="step-desc">The <span class="step-highlight">top 20 highest bids</span> secure a boat spot. In the event of a tie, remaining spots are resolved by random draw. Winners notified by <span class="step-highlight">March 30, 2026.</span></p>
+        <p class="step-desc">The <span class="step-highlight">top 20 highest bids</span> secure a boat spot. Ties resolved by random draw. Winners notified by <span class="step-highlight">March 30, 2026.</span></p>
       </div>
       <div class="step-card reveal" style="transition-delay:.2s">
         <div class="step-num">03</div>
         <div class="step-icon">💳</div>
         <div class="step-title">Complete Payment</div>
-        <p class="step-desc">Full payment is due by <span class="step-highlight">April 10, 2026.</span> Unpaid spots are forfeited to the next highest bidder. All bids are non-refundable tax-deductible donations.</p>
+        <p class="step-desc">Full payment due by <span class="step-highlight">April 10, 2026.</span> Unpaid spots forfeited to the next highest bidder. All bids are non-refundable tax-deductible donations.</p>
       </div>
     </div>
     <div class="bid-callout reveal">
@@ -492,7 +508,7 @@
         <p class="section-label">Evening Gala</p>
         <h2 class="section-title">An Elegant Evening<br>Under <em>Wyoming Skies</em></h2>
         <div class="divider-gold"></div>
-        <p class="section-body">The evening gala is open to everyone — tournament participation is not required. Join us for cocktails, a sit-down dinner, live music, a live auction, and exciting raffles in celebration of community and generosity.</p>
+        <p class="section-body">The evening gala is open to everyone — tournament participation is not required. Join us for cocktails, a sit-down dinner, live music, a live auction, and exciting raffles.</p>
         <div class="coming-soon-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           Registration Opens April 13, 2026
@@ -632,16 +648,15 @@
     const diff = new Date('2026-06-26T17:30:00-06:00') - new Date();
     if (diff <= 0) { document.getElementById('countdown').style.display='none'; return; }
     document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-    document.getElementById('cd-hrs').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    document.getElementById('cd-hrs').textContent  = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cd-min').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-sec').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
   }
-  updateCountdown(); setInterval(updateCountdown,1000);
+  updateCountdown(); setInterval(updateCountdown, 1000);
 
-  const toggle = document.getElementById('navToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  toggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
-  function closeMobile() { mobileNav.classList.remove('open'); }
+  document.getElementById('navToggle').addEventListener('click', () =>
+    document.getElementById('mobileNav').classList.toggle('open'));
+  function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -650,10 +665,12 @@
 
   const words = document.querySelectorAll('.mission-word');
   let wi = 0;
-  if (words.length) { words[0].classList.add('active'); setInterval(() => { words[wi].classList.remove('active'); wi=(wi+1)%words.length; words[wi].classList.add('active'); }, 1800); }
+  words[0].classList.add('active');
+  setInterval(() => { words[wi].classList.remove('active'); wi=(wi+1)%words.length; words[wi].classList.add('active'); }, 1800);
 
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(11,26,43,0.98)' : 'rgba(11,26,43,0.92)';
+    document.querySelector('nav').style.background =
+      window.scrollY > 50 ? 'rgba(11,26,43,0.98)' : 'rgba(11,26,43,0.92)';
   });
 </script>
 </body>
