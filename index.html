@@ -8,1038 +8,234 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #0b1a2b;
-      --river: #112d4a;
-      --blue-mid: #1e4976;
-      --gold: #c9a84c;
-      --gold-light: #e3c47a;
-      --gold-dim: #a07c2e;
-      --cream: #f2ede3;
-      --sage: #4e7059;
-      --sage-light: #6a9474;
-      --white: #ffffff;
-      --text-light: #d0c9bb;
-      --text-muted: #7a8fa3;
+      --navy: #0b1a2b; --river: #112d4a; --blue-mid: #1e4976;
+      --gold: #c9a84c; --gold-light: #e3c47a; --gold-dim: #a07c2e;
+      --cream: #f2ede3; --sage: #4e7059; --sage-light: #6a9474;
+      --white: #ffffff; --text-light: #d0c9bb; --text-muted: #7a8fa3;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; }
 
-    body {
-      font-family: 'Raleway', sans-serif;
-      background: var(--navy);
-      color: var(--cream);
-      overflow-x: hidden;
-    }
-
-    /* ─── WATER RIPPLE PATTERN ─── */
-    .water-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      opacity: 0.04;
-    }
+    .water-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; opacity: 0.04; }
     .water-bg svg { width: 100%; height: 100%; }
 
-    /* ─── NAV ─── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 3rem;
-      height: 72px;
-      background: rgba(11, 26, 43, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
-      transition: background 0.3s;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 72px;
+      background: rgba(11,26,43,0.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.18); transition: background 0.3s;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      text-decoration: none;
-    }
-    .nav-logo-icon {
-      width: 38px; height: 38px;
-      fill: var(--gold);
-    }
-    .nav-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--gold);
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-    }
-    .nav-logo-text span {
-      display: block;
-      font-size: 0.6rem;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.02em; line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 0.6rem; font-family: 'Raleway', sans-serif; font-weight: 500; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold) !important;
-      color: var(--navy) !important;
-      padding: 0.55rem 1.4rem !important;
-      letter-spacing: 0.1em !important;
-      border-radius: 2px;
-      transition: background 0.2s !important;
-    }
+    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; }
     .nav-cta:hover { background: var(--gold-light) !important; }
 
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 70%, rgba(30, 73, 118, 0.5) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(78, 112, 89, 0.25) 0%, transparent 60%),
-        linear-gradient(175deg, #0b1a2b 0%, #0e2540 40%, #0a1520 100%);
-    }
-    /* Animated water ripples */
-    .hero-ripples {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(201, 168, 76, 0.12);
-      animation: expand 8s ease-out infinite;
-      transform: translate(-50%, -50%) scale(0);
-    }
-    .ripple:nth-child(1) { left: 50%; top: 65%; width: 300px; height: 100px; animation-delay: 0s; }
-    .ripple:nth-child(2) { left: 50%; top: 65%; width: 600px; height: 200px; animation-delay: 2s; }
-    .ripple:nth-child(3) { left: 50%; top: 65%; width: 900px; height: 300px; animation-delay: 4s; }
-    .ripple:nth-child(4) { left: 50%; top: 65%; width: 1200px; height: 400px; animation-delay: 6s; }
-    @keyframes expand {
-      0% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
-      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
-    }
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(30,73,118,0.5) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 20% 30%, rgba(78,112,89,0.25) 0%, transparent 60%), linear-gradient(175deg,#0b1a2b 0%,#0e2540 40%,#0a1520 100%); }
+    .hero-photo { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&q=80&auto=format&fit=crop'); background-size: cover; background-position: center 60%; opacity: 0.18; }
+    .hero-ripples { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .ripple { position: absolute; border-radius: 50%; border: 1px solid rgba(201,168,76,0.12); animation: expand 8s ease-out infinite; transform: translate(-50%,-50%) scale(0); }
+    .ripple:nth-child(1){left:50%;top:65%;width:300px;height:100px;animation-delay:0s}
+    .ripple:nth-child(2){left:50%;top:65%;width:600px;height:200px;animation-delay:2s}
+    .ripple:nth-child(3){left:50%;top:65%;width:900px;height:300px;animation-delay:4s}
+    .ripple:nth-child(4){left:50%;top:65%;width:1200px;height:400px;animation-delay:6s}
+    @keyframes expand{0%{transform:translate(-50%,-50%) scale(0);opacity:.6}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+    .fly-line{position:absolute;top:28%;left:-5%;width:70%;pointer-events:none;animation:castLine 4s ease-in-out infinite alternate}
+    @keyframes castLine{0%{transform:rotate(-8deg) scaleX(.7);opacity:.3}100%{transform:rotate(-3deg) scaleX(1);opacity:.6}}
+    .hero-content{position:relative;z-index:2;padding:2rem;animation:fadeUp 1.2s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+    .hero-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;animation:fadeUp 1s .2s both ease}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:.95;color:var(--white);margin-bottom:.4rem;animation:fadeUp 1s .4s both ease}
+    .hero-title em{font-style:italic;color:var(--gold)}
+    .hero-subtitle{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);font-style:italic;color:var(--text-light);margin-bottom:2.5rem;animation:fadeUp 1s .6s both ease}
+    .hero-meta{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:3rem;animation:fadeUp 1s .8s both ease}
+    .hero-meta-item{text-align:center}
+    .hero-meta-item .label{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.25rem}
+    .hero-meta-item .value{font-size:.95rem;font-weight:600;color:var(--cream)}
+    .hero-divider{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3rem;animation:fadeUp 1s .9s both ease}
+    .hero-divider-line{width:60px;height:1px;background:var(--gold);opacity:.4}
+    .hero-buttons{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 1s both ease}
+    .btn{display:inline-block;text-decoration:none;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:1rem 2.4rem;border-radius:2px;transition:all .25s;cursor:pointer}
+    .btn-primary{background:var(--gold);color:var(--navy)}
+    .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.3)}
+    .btn-outline{border:1px solid rgba(201,168,76,.5);color:var(--gold);background:transparent}
+    .btn-outline:hover{border-color:var(--gold);background:rgba(201,168,76,.08);transform:translateY(-2px)}
+    .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:bounce 2s ease infinite;z-index:2}
+    .hero-scroll span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+    .hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-    /* Fly line animation */
-    .fly-line {
-      position: absolute;
-      top: 28%;
-      left: -5%;
-      width: 70%;
-      height: 2px;
-      pointer-events: none;
-      animation: castLine 4s ease-in-out infinite alternate;
-    }
-    @keyframes castLine {
-      0% { transform: rotate(-8deg) scaleX(0.7); opacity: 0.3; }
-      100% { transform: rotate(-3deg) scaleX(1); opacity: 0.6; }
-    }
+    /* PHOTO STRIP */
+    .photo-strip{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;height:400px;overflow:hidden}
+    .photo-pane{position:relative;overflow:hidden}
+    .photo-pane img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;filter:brightness(.68) saturate(.85)}
+    .photo-pane:hover img{transform:scale(1.05)}
+    .photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,26,43,.75) 0%,rgba(11,26,43,.1) 60%);display:flex;align-items:flex-end;padding:2rem}
+    .photo-caption{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(242,237,227,.8)}
+    .photo-sep{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(201,168,76,.25);z-index:2}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 2rem;
-      animation: fadeUp 1.2s ease both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    section{position:relative;z-index:1}
+    .section-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .section-label{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}
+    .section-title em{font-style:italic;color:var(--gold)}
+    .section-body{font-size:1.05rem;line-height:1.85;color:var(--text-light);max-width:680px}
+    .divider-gold{width:60px;height:2px;background:var(--gold);margin:1.5rem 0;opacity:.7}
 
-    .hero-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-      animation: fadeUp 1s 0.2s both ease;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 900;
-      line-height: 0.95;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-      animation: fadeUp 1s 0.4s both ease;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .hero-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-style: italic;
-      color: var(--text-light);
-      margin-bottom: 2.5rem;
-      animation: fadeUp 1s 0.6s both ease;
-    }
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-      animation: fadeUp 1s 0.8s both ease;
-    }
-    .hero-meta-item {
-      text-align: center;
-    }
-    .hero-meta-item .label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .hero-meta-item .value {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--cream);
-    }
-    .hero-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      animation: fadeUp 1s 0.9s both ease;
-    }
-    .hero-divider-line { width: 60px; height: 1px; background: var(--gold); opacity: 0.4; }
-    .hero-divider-icon { fill: var(--gold); opacity: 0.7; width: 22px; height: 22px; }
-    .hero-buttons {
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1s 1s both ease;
-    }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 1rem 2.4rem;
-      border-radius: 2px;
-      transition: all 0.25s;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
-    .btn-outline {
-      border: 1px solid rgba(201,168,76,0.5);
-      color: var(--gold);
-      background: transparent;
-    }
-    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+    #about{padding:8rem 0 6rem;background:linear-gradient(180deg,var(--navy) 0%,#0d2035 100%)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .about-card{background:linear-gradient(135deg,rgba(30,73,118,.4) 0%,rgba(78,112,89,.2) 100%);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:3rem;text-align:center;position:relative;overflow:hidden}
+    .about-card-icon{font-size:3.5rem;margin-bottom:1rem;display:block}
+    .about-card-number{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--gold);line-height:1}
+    .about-card-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-top:.4rem}
+    .about-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+    .about-stat{padding:1.2rem;background:rgba(255,255,255,.04);border-radius:3px;border:1px solid rgba(201,168,76,.12)}
+    .about-stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold)}
+    .about-stat-lbl{font-size:.68rem;letter-spacing:.12em;color:var(--text-muted);text-transform:uppercase;margin-top:.2rem}
+    .hope-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.6rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-light);margin-bottom:1.5rem;text-decoration:none;transition:background .2s}
+    .hope-badge:hover{background:rgba(78,112,89,.35)}
+    .hope-badge svg{fill:var(--sage-light)}
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      animation: bounce 2s ease infinite;
-      z-index: 2;
-    }
-    .hero-scroll span {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .hero-scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
+    #tournament{padding:7rem 0;background:#0a1822}
+    .tournament-header{text-align:center;max-width:700px;margin:0 auto 4rem}
+    .tournament-header .divider-gold{margin:1.5rem auto}
+    .tournament-header .section-body{margin:0 auto;text-align:center}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+    .step-card{background:linear-gradient(145deg,rgba(17,45,74,.6),rgba(11,26,43,.8));border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+    .step-card:hover{border-color:rgba(201,168,76,.4);transform:translateY(-4px)}
+    .step-num{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:rgba(201,168,76,.12);position:absolute;top:1rem;right:1.5rem;line-height:1}
+    .step-icon{font-size:1.8rem;margin-bottom:1rem}
+    .step-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.8rem;color:var(--cream)}
+    .step-desc{font-size:.9rem;line-height:1.7;color:var(--text-muted)}
+    .step-highlight{display:inline-block;color:var(--gold);font-weight:600}
+    .bid-callout{background:linear-gradient(135deg,rgba(30,73,118,.35),rgba(17,45,74,.5));border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:3rem 3.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+    .bid-callout-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:.6rem}
+    .bid-callout-details{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:1.2rem}
+    .bid-detail{font-size:.85rem;color:var(--text-muted)}
+    .bid-detail strong{color:var(--cream);font-weight:600;display:block;margin-bottom:.15rem;font-size:.95rem}
 
-    /* ─── SECTIONS ─── */
-    section { position: relative; z-index: 1; }
+    #sponsorship{padding:7rem 0;background:linear-gradient(180deg,#0a1822 0%,var(--navy) 100%)}
+    .sponsorship-header{text-align:center;max-width:680px;margin:0 auto 4rem}
+    .sponsorship-header .divider-gold{margin:1.5rem auto}
+    .sponsor-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .tier-card{border-radius:4px;padding:2.8rem 2rem;text-align:center;position:relative;overflow:hidden;transition:transform .3s}
+    .tier-card:hover{transform:translateY(-5px)}
+    .tier-platinum{background:linear-gradient(145deg,rgba(201,168,76,.18),rgba(11,26,43,.9));border:1px solid rgba(201,168,76,.5)}
+    .tier-gold{background:linear-gradient(145deg,rgba(201,168,76,.1),rgba(11,26,43,.9));border:1px solid rgba(201,168,76,.3)}
+    .tier-silver{background:linear-gradient(145deg,rgba(160,170,185,.1),rgba(11,26,43,.9));border:1px solid rgba(160,170,185,.25)}
+    .tier-badge{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.5rem}
+    .tier-platinum .tier-badge{background:rgba(201,168,76,.25);color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+    .tier-gold .tier-badge{background:rgba(201,168,76,.15);color:var(--gold-dim);border:1px solid rgba(201,168,76,.25)}
+    .tier-silver .tier-badge{background:rgba(160,170,185,.15);color:#a0aabd;border:1px solid rgba(160,170,185,.3)}
+    .tier-amount{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;margin-bottom:.3rem}
+    .tier-platinum .tier-amount{color:var(--gold)}
+    .tier-gold .tier-amount{color:var(--gold-dim)}
+    .tier-silver .tier-amount{color:#a0aabd}
+    .tier-amount-sub{font-size:.75rem;color:var(--text-muted);letter-spacing:.1em;margin-bottom:2rem}
+    .tier-divider{width:40px;height:1px;background:currentColor;margin:0 auto 2rem;opacity:.3}
+    .tier-perks{list-style:none;text-align:left;font-size:.88rem;line-height:1.6;color:var(--text-light)}
+    .tier-perks li{padding:.45rem 0;padding-left:1.4rem;position:relative;border-bottom:1px solid rgba(255,255,255,.05)}
+    .tier-perks li:last-child{border-bottom:none}
+    .tier-perks li::before{content:'✦';position:absolute;left:0;font-size:.55rem;top:.6rem}
+    .tier-platinum .tier-perks li::before{color:var(--gold)}
+    .tier-gold .tier-perks li::before{color:var(--gold-dim)}
+    .tier-silver .tier-perks li::before{color:#a0aabd}
+    .tier-featured-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.58rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:.3rem 1rem;border-radius:0 0 4px 4px}
 
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    #gala{padding:7rem 0;background:#09151f;overflow:hidden}
+    .gala-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .gala-card-bg{background:linear-gradient(145deg,rgba(30,73,118,.35),rgba(78,112,89,.15));border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:3rem}
+    .gala-date-display{text-align:center;padding:2.5rem 0;border-bottom:1px solid rgba(201,168,76,.15);margin-bottom:2rem}
+    .gala-month{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+    .gala-day{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;line-height:1;color:var(--white)}
+    .gala-year{font-size:.8rem;letter-spacing:.25em;color:var(--text-muted)}
+    .gala-ticket-opts{display:flex;flex-direction:column;gap:1rem}
+    .ticket-opt{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:3px}
+    .ticket-opt-name{font-size:.9rem;font-weight:600;color:var(--cream)}
+    .ticket-opt-sub{font-size:.72rem;color:var(--text-muted);margin-top:.15rem}
+    .ticket-opt-price{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+    .gala-amenities{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2.5rem}
+    .amenity{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-light)}
+    .amenity-dot{width:6px;height:6px;border-radius:50%;background:var(--sage-light);flex-shrink:0}
+    .coming-soon-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.5rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-light);margin-top:2rem;margin-bottom:1.5rem}
 
-    .section-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .section-body {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: var(--text-light);
-      max-width: 680px;
-    }
+    .deadline-banner{background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.08),rgba(201,168,76,.15));border-top:1px solid rgba(201,168,76,.25);border-bottom:1px solid rgba(201,168,76,.25);padding:2rem 0;text-align:center}
+    .deadline-banner-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .deadline-item{text-align:center}
+    .deadline-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold)}
+    .deadline-lbl{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+    .deadline-pipe{width:1px;height:50px;background:rgba(201,168,76,.25)}
 
-    .divider-gold {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem 0;
-      opacity: 0.7;
-    }
+    #beneficiary{padding:7rem 0;background:var(--navy)}
+    .beneficiary-inner{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:center}
+    .beneficiary-quote{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;line-height:1.55;color:var(--cream);padding-left:2rem;border-left:3px solid var(--gold)}
+    .beneficiary-mission-words{display:flex;flex-direction:column;gap:.6rem;text-align:right}
+    .mission-word{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--navy);-webkit-text-stroke:1px rgba(201,168,76,.4);line-height:1;transition:color .3s}
+    .mission-word.active,.mission-word:hover{color:var(--gold);-webkit-text-stroke-color:var(--gold)}
 
-    /* ─── ABOUT / MISSION ─── */
-    #about {
-      padding: 8rem 0 6rem;
-      background: linear-gradient(180deg, var(--navy) 0%, #0d2035 100%);
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-card {
-      background: linear-gradient(135deg, rgba(30, 73, 118, 0.4) 0%, rgba(78, 112, 89, 0.2) 100%);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      border-radius: 4px;
-      padding: 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .about-card-icon {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .about-card-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .about-card-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-    }
-    .about-card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    .about-stat {
-      padding: 1.2rem;
-      background: rgba(255,255,255,0.04);
-      border-radius: 3px;
-      border: 1px solid rgba(201,168,76,0.12);
-    }
-    .about-stat-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .about-stat-lbl {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-top: 0.2rem;
-    }
-    .hope-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(78, 112, 89, 0.2);
-      border: 1px solid rgba(106, 148, 116, 0.3);
-      border-radius: 2px;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sage-light);
-      margin-bottom: 1.5rem;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .hope-badge:hover { background: rgba(78,112,89,0.35); }
-    .hope-badge svg { fill: var(--sage-light); }
+    #contact{padding:6rem 0;background:#07121b}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .contact-links{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+    .contact-link-item{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.12);border-radius:3px;text-decoration:none;transition:border-color .2s,background .2s}
+    .contact-link-item:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.05)}
+    .contact-link-icon{font-size:1.2rem}
+    .contact-link-text{font-size:.9rem;color:var(--text-light)}
+    .contact-link-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--text-muted)}
+    .contact-actions{display:flex;flex-direction:column;gap:1rem}
+    .contact-action-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
+    .action-item{display:flex;align-items:center;gap:1.2rem;padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.1);border-radius:3px;text-decoration:none;transition:all .2s}
+    .action-item:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.06);transform:translateX(4px)}
+    .action-icon{font-size:1.5rem}
+    .action-title{font-size:.9rem;font-weight:600;color:var(--cream)}
+    .action-sub{font-size:.75rem;color:var(--text-muted);margin-top:.15rem}
+    .action-arrow{margin-left:auto;color:var(--gold);font-size:1.2rem}
 
-    /* ─── TOURNAMENT ─── */
-    #tournament {
-      padding: 7rem 0;
-      background: #0a1822;
-    }
-    .tournament-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 4rem;
-    }
-    .tournament-header .divider-gold { margin: 1.5rem auto; }
-    .tournament-header .section-body { margin: 0 auto; text-align: center; }
+    footer{background:#040d15;padding:2.5rem 0;text-align:center;border-top:1px solid rgba(201,168,76,.12)}
+    .footer-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold)}
+    .footer-logo span{display:block;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+    .footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+    .footer-links a{text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);transition:color .2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-bottom{font-size:.75rem;color:rgba(122,143,163,.5);letter-spacing:.05em}
+    .footer-bottom a{color:rgba(201,168,76,.5);text-decoration:none}
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-    .step-card {
-      background: linear-gradient(145deg, rgba(17, 45, 74, 0.6), rgba(11, 26, 43, 0.8));
-      border: 1px solid rgba(201, 168, 76, 0.15);
-      border-radius: 4px;
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .step-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 900;
-      color: rgba(201, 168, 76, 0.12);
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      line-height: 1;
-    }
-    .step-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .step-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      color: var(--cream);
-    }
-    .step-desc {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-    .step-highlight {
-      display: inline-block;
-      color: var(--gold);
-      font-weight: 600;
-    }
+    .countdown{display:flex;gap:1.5rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+    .countdown-block{text-align:center;min-width:65px}
+    .countdown-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+    .countdown-unit{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:.3rem}
+    .countdown-sep{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,168,76,.3);padding-top:.25rem}
 
-    .bid-callout {
-      background: linear-gradient(135deg, rgba(30, 73, 118, 0.35), rgba(17, 45, 74, 0.5));
-      border: 1px solid rgba(201, 168, 76, 0.3);
-      border-radius: 4px;
-      padding: 3rem 3.5rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
-    }
-    .bid-callout-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-    }
-    .bid-callout-details {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      margin-top: 1.2rem;
-    }
-    .bid-detail { font-size: 0.85rem; color: var(--text-muted); }
-    .bid-detail strong { color: var(--cream); font-weight: 600; display: block; margin-bottom: 0.15rem; font-size: 0.95rem; }
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+    .nav-toggle span{display:block;width:24px;height:2px;background:var(--cream);transition:all .3s}
+    .mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(11,26,43,.98);backdrop-filter:blur(14px);z-index:99;padding:2rem;flex-direction:column;gap:1.5rem;border-bottom:1px solid rgba(201,168,76,.15)}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a{text-decoration:none;color:var(--text-light);font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+    .mobile-nav a:hover{color:var(--gold)}
 
-    /* ─── SPONSORSHIP ─── */
-    #sponsorship {
-      padding: 7rem 0;
-      background: linear-gradient(180deg, #0a1822 0%, var(--navy) 100%);
-    }
-    .sponsorship-header {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 4rem;
-    }
-    .sponsorship-header .divider-gold { margin: 1.5rem auto; }
-
-    .sponsor-tiers {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .tier-card {
-      border-radius: 4px;
-      padding: 2.8rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-    .tier-card:hover { transform: translateY(-5px); }
-    .tier-platinum {
-      background: linear-gradient(145deg, rgba(201,168,76,0.18), rgba(11,26,43,0.9));
-      border: 1px solid rgba(201, 168, 76, 0.5);
-    }
-    .tier-gold {
-      background: linear-gradient(145deg, rgba(201,168,76,0.1), rgba(11,26,43,0.9));
-      border: 1px solid rgba(201, 168, 76, 0.3);
-    }
-    .tier-silver {
-      background: linear-gradient(145deg, rgba(160, 170, 185, 0.1), rgba(11,26,43,0.9));
-      border: 1px solid rgba(160, 170, 185, 0.25);
-    }
-    .tier-badge {
-      display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 800;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
-    }
-    .tier-platinum .tier-badge { background: rgba(201,168,76,0.25); color: var(--gold); border: 1px solid rgba(201,168,76,0.4); }
-    .tier-gold .tier-badge { background: rgba(201,168,76,0.15); color: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); }
-    .tier-silver .tier-badge { background: rgba(160,170,185,0.15); color: #a0aabd; border: 1px solid rgba(160,170,185,0.3); }
-
-    .tier-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-    .tier-platinum .tier-amount { color: var(--gold); }
-    .tier-gold .tier-amount { color: var(--gold-dim); }
-    .tier-silver .tier-amount { color: #a0aabd; }
-
-    .tier-amount-sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
-    }
-    .tier-divider { width: 40px; height: 1px; background: currentColor; margin: 0 auto 2rem; opacity: 0.3; }
-    .tier-perks {
-      list-style: none;
-      text-align: left;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: var(--text-light);
-    }
-    .tier-perks li {
-      padding: 0.45rem 0;
-      padding-left: 1.4rem;
-      position: relative;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .tier-perks li:last-child { border-bottom: none; }
-    .tier-perks li::before {
-      content: '✦';
-      position: absolute;
-      left: 0;
-      font-size: 0.55rem;
-      top: 0.6rem;
-    }
-    .tier-platinum .tier-perks li::before { color: var(--gold); }
-    .tier-gold .tier-perks li::before { color: var(--gold-dim); }
-    .tier-silver .tier-perks li::before { color: #a0aabd; }
-
-    /* Featured badge */
-    .tier-featured-label {
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.58rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.3rem 1rem;
-      border-radius: 0 0 4px 4px;
-    }
-
-    /* ─── GALA ─── */
-    #gala {
-      padding: 7rem 0;
-      background: #09151f;
-      overflow: hidden;
-    }
-    .gala-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .gala-visual {
-      position: relative;
-    }
-    .gala-card-bg {
-      background: linear-gradient(145deg, rgba(30,73,118,0.35), rgba(78,112,89,0.15));
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 4px;
-      padding: 3rem;
-    }
-    .gala-date-display {
-      text-align: center;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-      margin-bottom: 2rem;
-    }
-    .gala-month {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .gala-day {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 900;
-      line-height: 1;
-      color: var(--white);
-    }
-    .gala-year {
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
-      color: var(--text-muted);
-    }
-    .gala-ticket-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .ticket-opt {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 1.5rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 3px;
-      transition: border-color 0.2s;
-    }
-    .ticket-opt:hover { border-color: rgba(201,168,76,0.3); }
-    .ticket-opt-name {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--cream);
-    }
-    .ticket-opt-sub {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 0.15rem;
-    }
-    .ticket-opt-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .gala-amenities {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 2.5rem;
-    }
-    .amenity {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.85rem;
-      color: var(--text-light);
-    }
-    .amenity-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sage-light);
-      flex-shrink: 0;
-    }
-    .coming-soon-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(78,112,89,0.2);
-      border: 1px solid rgba(106,148,116,0.3);
-      border-radius: 2px;
-      padding: 0.5rem 1rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sage-light);
-      margin-top: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ─── DEADLINE BANNER ─── */
-    .deadline-banner {
-      background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08), rgba(201,168,76,0.15));
-      border-top: 1px solid rgba(201,168,76,0.25);
-      border-bottom: 1px solid rgba(201,168,76,0.25);
-      padding: 2rem 0;
-      text-align: center;
-    }
-    .deadline-banner-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .deadline-item { text-align: center; }
-    .deadline-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .deadline-lbl {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .deadline-pipe { width: 1px; height: 50px; background: rgba(201,168,76,0.25); }
-
-    /* ─── BENEFICIARY ─── */
-    #beneficiary {
-      padding: 7rem 0;
-      background: var(--navy);
-    }
-    .beneficiary-inner {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .beneficiary-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-style: italic;
-      line-height: 1.55;
-      color: var(--cream);
-      position: relative;
-      padding-left: 2rem;
-      border-left: 3px solid var(--gold);
-    }
-    .beneficiary-mission-words {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      text-align: right;
-    }
-    .mission-word {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--navy);
-      -webkit-text-stroke: 1px rgba(201,168,76,0.4);
-      line-height: 1;
-      transition: color 0.3s;
-    }
-    .mission-word.active, .mission-word:hover { color: var(--gold); -webkit-text-stroke-color: var(--gold); }
-
-    /* ─── CONTACT ─── */
-    #contact {
-      padding: 6rem 0;
-      background: #07121b;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .contact-link-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.2rem 1.5rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.12);
-      border-radius: 3px;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .contact-link-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.05); }
-    .contact-link-icon { font-size: 1.2rem; }
-    .contact-link-text { font-size: 0.9rem; color: var(--text-light); }
-    .contact-link-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); }
-
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .contact-action-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-    .action-item {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.1);
-      border-radius: 3px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .action-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); transform: translateX(4px); }
-    .action-icon { font-size: 1.5rem; }
-    .action-title { font-size: 0.9rem; font-weight: 600; color: var(--cream); }
-    .action-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; }
-    .action-arrow { margin-left: auto; color: var(--gold); font-size: 1.2rem; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #040d15;
-      padding: 2.5rem 0;
-      text-align: center;
-      border-top: 1px solid rgba(201,168,76,0.12);
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-    .footer-logo span {
-      display: block;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-bottom {
-      font-size: 0.75rem;
-      color: rgba(122,143,163,0.5);
-      letter-spacing: 0.05em;
-    }
-    .footer-bottom a { color: rgba(201,168,76,0.5); text-decoration: none; }
-
-    /* ─── COUNTDOWN ─── */
-    .countdown {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-    .countdown-block {
-      text-align: center;
-      min-width: 65px;
-    }
-    .countdown-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .countdown-unit {
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-    }
-    .countdown-sep {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: rgba(201,168,76,0.3);
-      padding-top: 0.25rem;
-    }
-
-    /* ─── MOBILE MENU ─── */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--cream);
-      transition: all 0.3s;
-    }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 72px; left: 0; right: 0;
-      background: rgba(11,26,43,0.98);
-      backdrop-filter: blur(14px);
-      z-index: 99;
-      padding: 2rem;
-      flex-direction: column;
-      gap: 1.5rem;
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: color 0.2s;
-    }
-    .mobile-nav a:hover { color: var(--gold); }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: flex; }
-      .about-grid, .gala-grid, .contact-grid, .beneficiary-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .steps-grid, .sponsor-tiers { grid-template-columns: 1fr; }
-      .bid-callout { grid-template-columns: 1fr; }
-      .about-card-grid { grid-template-columns: 1fr 1fr; }
-      nav { padding: 0 1.5rem; }
-      .section-inner { padding: 0 1.5rem; }
-    }
-
-    /* Fade-in on scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    @media(max-width:900px){
+      .nav-links{display:none}.nav-toggle{display:flex}
+      .about-grid,.gala-grid,.contact-grid,.beneficiary-inner{grid-template-columns:1fr;gap:3rem}
+      .steps-grid,.sponsor-tiers{grid-template-columns:1fr}
+      .bid-callout{grid-template-columns:1fr}
+      .photo-strip{grid-template-columns:1fr;height:auto}
+      .photo-pane{height:220px}
+      nav{padding:0 1.5rem}
+      .section-inner{padding:0 1.5rem}
+    }
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
   </style>
 </head>
 <body>
 
-<!-- Background water pattern -->
 <div class="water-bg" aria-hidden="true">
   <svg viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,100 Q300,50 600,100 T1200,100" stroke="#c9a84c" stroke-width="1" fill="none"/>
@@ -1047,28 +243,20 @@
     <path d="M0,300 Q300,250 600,300 T1200,300" stroke="#c9a84c" stroke-width="1" fill="none"/>
     <path d="M0,400 Q300,350 600,400 T1200,400" stroke="#c9a84c" stroke-width="1" fill="none"/>
     <path d="M0,500 Q300,450 600,500 T1200,500" stroke="#c9a84c" stroke-width="1" fill="none"/>
-    <path d="M0,600 Q300,550 600,600 T1200,600" stroke="#c9a84c" stroke-width="1" fill="none"/>
-    <path d="M0,700 Q300,650 600,700 T1200,700" stroke="#c9a84c" stroke-width="1" fill="none"/>
   </svg>
 </div>
 
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <svg class="nav-logo-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-      <!-- Fishing hook icon -->
-      <path d="M20 4 C20 4, 28 8, 28 16 C28 22, 24 26, 20 28 C18 29, 16 30, 15 33 C14 36, 16 38, 18 37" stroke="#c9a84c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4C20 4 28 8 28 16C28 22 24 26 20 28C18 29 16 30 15 33C14 36 16 38 18 37" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
       <circle cx="20" cy="6" r="2.5" fill="#c9a84c"/>
-      <!-- Fly lure -->
-      <ellipse cx="26" cy="13" rx="5" ry="2.5" fill="#c9a84c" opacity="0.5" transform="rotate(-20,26,13)"/>
-      <path d="M22,12 Q26,10 30,14" stroke="#c9a84c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- Line -->
-      <path d="M20 4 L8 2" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+      <ellipse cx="26" cy="13" rx="5" ry="2.5" fill="#c9a84c" opacity="0.5" transform="rotate(-20 26 13)"/>
+      <path d="M22 12Q26 10 30 14" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M20 4L8 2" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
     </svg>
-    <div class="nav-logo-text">
-      Hooked on Giving
-      <span>WRC Energy · June 26, 2026</span>
-    </div>
+    <div class="nav-logo-text">Hooked on Giving<span>WRC Energy · June 26, 2026</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1076,11 +264,9 @@
     <li><a href="#sponsorship">Sponsor</a></li>
     <li><a href="#gala">Gala</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="mailto:aneubauer@caminoresources.com" class="nav-cta btn">Submit Bid</a></li>
+    <li><a href="Hooked_on_Giving_Brochure_and_Bid_Form.pdf" download class="nav-cta btn">Submit Bid</a></li>
   </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
@@ -1089,51 +275,34 @@
   <a href="#sponsorship" onclick="closeMobile()">Sponsor</a>
   <a href="#gala" onclick="closeMobile()">Gala</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="mailto:aneubauer@caminoresources.com" class="btn btn-primary" style="text-align:center;margin-top:.5rem">Submit Bid</a>
+  <a href="Hooked_on_Giving_Brochure_and_Bid_Form.pdf" download class="btn btn-primary" style="text-align:center;margin-top:.5rem">Download Bid Form</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
   <div class="hero-ripples">
-    <div class="ripple"></div>
-    <div class="ripple"></div>
-    <div class="ripple"></div>
-    <div class="ripple"></div>
+    <div class="ripple"></div><div class="ripple"></div><div class="ripple"></div><div class="ripple"></div>
   </div>
-  <!-- Fly casting line SVG -->
   <svg class="fly-line" viewBox="0 0 600 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M0,20 Q150,2 300,18 Q450,35 580,10" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/>
     <circle cx="580" cy="10" r="4" fill="#c9a84c" opacity="0.6"/>
-    <ellipse cx="570" cy="9" rx="8" ry="3" fill="#c9a84c" opacity="0.35" transform="rotate(-15,570,9)"/>
+    <ellipse cx="570" cy="9" rx="8" ry="3" fill="#c9a84c" opacity="0.35" transform="rotate(-15 570 9)"/>
   </svg>
-
   <div class="hero-content">
     <p class="hero-eyebrow">WRC Energy Presents</p>
     <h1 class="hero-title">Hooked<br>on <em>Giving</em></h1>
     <p class="hero-subtitle">1st Annual Fly-Fishing Tournament &amp; Gala</p>
     <div class="hero-divider">
       <div class="hero-divider-line"></div>
-      <svg class="hero-divider-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2C12 2 18 6 18 12C18 16 15 19 12 20C10 20.8 8 22 7.5 24H16.5C16 22 14 20.8 12 20"/>
-        <circle cx="12" cy="4" r="2"/>
-        <path d="M12 2 L4 1" stroke-width="0.8"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a84c" opacity="0.7" aria-hidden="true"><path d="M12 2C9 4 6 7 6 11c0 3.3 2.7 6 6 7 2-1 6-3.7 6-7 0-4-3-7-6-9z"/></svg>
       <div class="hero-divider-line"></div>
     </div>
     <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="label">Date</span>
-        <span class="value">June 26, 2026</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="label">Location</span>
-        <span class="value">North Platte River, Casper, WY</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="label">Benefiting</span>
-        <span class="value">The Hope Center</span>
-      </div>
+      <div class="hero-meta-item"><span class="label">Date</span><span class="value">June 26, 2026</span></div>
+      <div class="hero-meta-item"><span class="label">Location</span><span class="value">North Platte River, Casper, WY</span></div>
+      <div class="hero-meta-item"><span class="label">Benefiting</span><span class="value">The Hope Center</span></div>
     </div>
     <div class="countdown" id="countdown">
       <div class="countdown-block"><div class="countdown-num" id="cd-days">--</div><div class="countdown-unit">Days</div></div>
@@ -1143,41 +312,25 @@
       <div class="countdown-block"><div class="countdown-num" id="cd-min">--</div><div class="countdown-unit">Min</div></div>
       <div class="countdown-sep">:</div>
       <div class="countdown-block"><div class="countdown-num" id="cd-sec">--</div><div class="countdown-unit">Sec</div></div>
-    </div>
-    <br>
+    </div><br>
     <div class="hero-buttons">
-      <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Bid Submission" class="btn btn-primary">Submit Your Bid</a>
+      <a href="Hooked_on_Giving_Brochure_and_Bid_Form.pdf" download class="btn btn-primary">Download Bid Form</a>
       <a href="#about" class="btn btn-outline">Learn More</a>
     </div>
   </div>
-  <div class="hero-scroll" aria-hidden="true">
-    <span>Explore</span>
-    <div class="hero-scroll-line"></div>
-  </div>
+  <div class="hero-scroll" aria-hidden="true"><span>Explore</span><div class="hero-scroll-line"></div></div>
 </section>
 
 <!-- DEADLINE BANNER -->
 <div class="deadline-banner">
   <div class="deadline-banner-inner">
-    <div class="deadline-item">
-      <div class="deadline-val">$5,000</div>
-      <div class="deadline-lbl">Minimum Bid Per Boat</div>
-    </div>
+    <div class="deadline-item"><div class="deadline-val">$5,000</div><div class="deadline-lbl">Minimum Bid Per Boat</div></div>
     <div class="deadline-pipe"></div>
-    <div class="deadline-item">
-      <div class="deadline-val">20</div>
-      <div class="deadline-lbl">Boat Spots Available</div>
-    </div>
+    <div class="deadline-item"><div class="deadline-val">20</div><div class="deadline-lbl">Boat Spots Available</div></div>
     <div class="deadline-pipe"></div>
-    <div class="deadline-item">
-      <div class="deadline-val">Mar 27</div>
-      <div class="deadline-lbl">Bid Deadline · 5:00 PM MST</div>
-    </div>
+    <div class="deadline-item"><div class="deadline-val">Mar 27</div><div class="deadline-lbl">Bid Deadline · 5:00 PM MST</div></div>
     <div class="deadline-pipe"></div>
-    <div class="deadline-item">
-      <div class="deadline-val">100%</div>
-      <div class="deadline-lbl">Tax-Deductible</div>
-    </div>
+    <div class="deadline-item"><div class="deadline-val">100%</div><div class="deadline-lbl">Tax-Deductible</div></div>
   </div>
 </div>
 
@@ -1189,46 +342,43 @@
         <p class="section-label">About the Event</p>
         <h2 class="section-title">A Day on the River.<br>A Night to <em>Remember.</em></h2>
         <div class="divider-gold"></div>
-        <p class="section-body">
-          Join us for an unforgettable day of philanthropy on Wyoming's legendary North Platte River. Cast your line alongside experienced local guides during the tournament, then join us for an elegant evening gala featuring dinner, live music, a live auction, and exciting raffles.
-        </p>
-        <p class="section-body" style="margin-top:1.2rem;">
-          Every bid, every ticket, every donation goes directly to empowering victims and inspiring hope across Converse and Niobrara Counties through the work of the Hope Center.
-        </p>
+        <p class="section-body">Join us for an unforgettable day of philanthropy on Wyoming's legendary North Platte River. Cast your line alongside experienced local guides during the tournament, then join us for an elegant evening gala featuring dinner, live music, a live auction, and exciting raffles.</p>
+        <p class="section-body" style="margin-top:1.2rem">Every bid, every ticket, every donation goes directly to empowering victims and inspiring hope across Converse and Niobrara Counties through the work of the Hope Center.</p>
         <br>
         <a href="https://wyohopecenter.org" target="_blank" class="hope-badge">
           <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           Benefiting the Hope Center · wyohopecenter.org
         </a>
       </div>
-      <div class="about-visual reveal">
+      <div class="reveal">
         <div class="about-card">
           <span class="about-card-icon">🎣</span>
           <div class="about-card-number">40</div>
           <div class="about-card-label">Anglers on the Water</div>
           <div class="about-card-grid">
-            <div class="about-stat">
-              <div class="about-stat-val">20</div>
-              <div class="about-stat-lbl">Boats</div>
-            </div>
-            <div class="about-stat">
-              <div class="about-stat-val">2</div>
-              <div class="about-stat-lbl">Per Team</div>
-            </div>
-            <div class="about-stat">
-              <div class="about-stat-val">1</div>
-              <div class="about-stat-lbl">Guide/Boat</div>
-            </div>
-            <div class="about-stat">
-              <div class="about-stat-val">WY</div>
-              <div class="about-stat-lbl">Blue Ribbon Waters</div>
-            </div>
+            <div class="about-stat"><div class="about-stat-val">20</div><div class="about-stat-lbl">Boats</div></div>
+            <div class="about-stat"><div class="about-stat-val">2</div><div class="about-stat-lbl">Per Team</div></div>
+            <div class="about-stat"><div class="about-stat-val">1</div><div class="about-stat-lbl">Guide/Boat</div></div>
+            <div class="about-stat"><div class="about-stat-val">WY</div><div class="about-stat-lbl">Blue Ribbon Waters</div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-sep"></div>
+  <div class="photo-pane">
+    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=900&q=80&auto=format&fit=crop" alt="Fly fisherman wading a river at sunrise" loading="lazy" />
+    <div class="photo-overlay"><span class="photo-caption">Blue-ribbon waters of the North Platte River</span></div>
+  </div>
+  <div class="photo-pane">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop" alt="Fly fishing rod and cast line over a scenic river" loading="lazy" />
+    <div class="photo-overlay"><span class="photo-caption">Casper, Wyoming · June 26, 2026</span></div>
+  </div>
+</div>
 
 <!-- TOURNAMENT -->
 <section id="tournament">
@@ -1237,17 +387,14 @@
       <p class="section-label">Fly-Fishing Tournament</p>
       <h2 class="section-title">Compete on<br><em>Blue-Ribbon Waters</em></h2>
       <div class="divider-gold"></div>
-      <p class="section-body">
-        Secure your spot on the legendary North Platte River through competitive bidding. The top 20 bids win access to this exclusive tournament — with each team paired with an experienced local guide.
-      </p>
+      <p class="section-body">Secure your spot on the legendary North Platte River through competitive bidding. The top 20 bids win access to this exclusive tournament — with each team paired with an experienced local guide.</p>
     </div>
-
     <div class="steps-grid">
       <div class="step-card reveal">
         <div class="step-num">01</div>
         <div class="step-icon">📋</div>
-        <div class="step-title">Submit Your Bid</div>
-        <p class="step-desc">Minimum bid is <span class="step-highlight">$5,000 per boat</span> (2 participants). Whole dollars only. Download the bid form and submit to aneubauer@caminoresources.com by <span class="step-highlight">March 27, 2026 at 5:00 PM MST.</span></p>
+        <div class="step-title">Download &amp; Submit Your Bid</div>
+        <p class="step-desc">Minimum bid is <span class="step-highlight">$5,000 per boat</span> (2 participants). Download the bid form below, complete all fields, and return to aneubauer@caminoresources.com by <span class="step-highlight">March 27, 2026 at 5:00 PM MST.</span></p>
       </div>
       <div class="step-card reveal" style="transition-delay:.1s">
         <div class="step-num">02</div>
@@ -1262,20 +409,19 @@
         <p class="step-desc">Full payment is due by <span class="step-highlight">April 10, 2026.</span> Unpaid spots are forfeited to the next highest bidder. All bids are non-refundable tax-deductible donations.</p>
       </div>
     </div>
-
     <div class="bid-callout reveal">
       <div>
         <h3 class="bid-callout-title">Ready to Cast Your Bid?</h3>
-        <p style="color:var(--text-muted);font-size:.9rem;">Download the bid form, complete all fields, and submit via email before the deadline.</p>
+        <p style="color:var(--text-muted);font-size:.9rem">Download the bid form, complete all fields, and submit via email before the deadline.</p>
         <div class="bid-callout-details">
           <div class="bid-detail"><strong>Deadline</strong>March 27, 2026 · 5:00 PM MST</div>
           <div class="bid-detail"><strong>Submit To</strong>aneubauer@caminoresources.com</div>
           <div class="bid-detail"><strong>Questions?</strong>405.438.0193</div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;min-width:200px;">
-        <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Bid Submission" class="btn btn-primary" style="text-align:center">Submit Bid →</a>
-        <a href="#contact" class="btn btn-outline" style="text-align:center">Download Form</a>
+      <div style="display:flex;flex-direction:column;gap:.8rem;min-width:200px">
+        <a href="Hooked_on_Giving_Brochure_and_Bid_Form.pdf" download class="btn btn-primary" style="text-align:center">Download Bid Form ↓</a>
+        <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Bid Submission" class="btn btn-outline" style="text-align:center">Email April →</a>
       </div>
     </div>
   </div>
@@ -1290,7 +436,6 @@
       <div class="divider-gold"></div>
       <p class="section-body">All winning bidders are recognized as event sponsors. Your bid amount determines your sponsorship tier and the recognition benefits your company receives.</p>
     </div>
-
     <div class="sponsor-tiers">
       <div class="tier-card tier-silver reveal">
         <div class="tier-badge">Silver</div>
@@ -1305,7 +450,6 @@
           <li>2 gala admission tickets</li>
         </ul>
       </div>
-
       <div class="tier-card tier-gold reveal" style="transition-delay:.1s">
         <div class="tier-badge">Gold</div>
         <div class="tier-amount">$7,501</div>
@@ -1319,7 +463,6 @@
           <li>4 gala admission tickets</li>
         </ul>
       </div>
-
       <div class="tier-card tier-platinum reveal" style="transition-delay:.2s;position:relative">
         <div class="tier-featured-label">Most Impactful</div>
         <div class="tier-badge">Platinum</div>
@@ -1335,9 +478,8 @@
         </ul>
       </div>
     </div>
-
-    <p style="text-align:center;margin-top:2.5rem;font-size:.82rem;color:var(--text-muted);letter-spacing:.05em;">
-      Additional sponsorship opportunities available. Contact April Neubauer at <a href="mailto:aneubauer@caminoresources.com" style="color:var(--gold);text-decoration:none;">aneubauer@caminoresources.com</a>
+    <p style="text-align:center;margin-top:2.5rem;font-size:.82rem;color:var(--text-muted)">
+      Additional sponsorship opportunities available · <a href="mailto:aneubauer@caminoresources.com" style="color:var(--gold);text-decoration:none">aneubauer@caminoresources.com</a>
     </p>
   </div>
 </section>
@@ -1350,9 +492,7 @@
         <p class="section-label">Evening Gala</p>
         <h2 class="section-title">An Elegant Evening<br>Under <em>Wyoming Skies</em></h2>
         <div class="divider-gold"></div>
-        <p class="section-body">
-          The evening gala is open to everyone — tournament participation is not required. Join us for cocktails, a sit-down dinner, live music, a live auction, and exciting raffles in celebration of community and generosity.
-        </p>
+        <p class="section-body">The evening gala is open to everyone — tournament participation is not required. Join us for cocktails, a sit-down dinner, live music, a live auction, and exciting raffles in celebration of community and generosity.</p>
         <div class="coming-soon-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           Registration Opens April 13, 2026
@@ -1368,8 +508,7 @@
         <br>
         <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Gala Inquiry" class="btn btn-outline" style="margin-top:.5rem">Inquire About Gala →</a>
       </div>
-
-      <div class="reveal gala-visual">
+      <div class="reveal">
         <div class="gala-card-bg">
           <div class="gala-date-display">
             <div class="gala-month">June · 2026</div>
@@ -1378,24 +517,15 @@
           </div>
           <div class="gala-ticket-opts">
             <div class="ticket-opt">
-              <div>
-                <div class="ticket-opt-name">Table for 8</div>
-                <div class="ticket-opt-sub">Reserved seating for your group</div>
-              </div>
+              <div><div class="ticket-opt-name">Table for 8</div><div class="ticket-opt-sub">Reserved seating for your group</div></div>
               <div class="ticket-opt-price">$1,500</div>
             </div>
             <div class="ticket-opt">
-              <div>
-                <div class="ticket-opt-name">Individual Admission</div>
-                <div class="ticket-opt-sub">General seating</div>
-              </div>
+              <div><div class="ticket-opt-name">Individual Admission</div><div class="ticket-opt-sub">General seating</div></div>
               <div class="ticket-opt-price">$200</div>
             </div>
           </div>
-          <p style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1.5rem;letter-spacing:.05em;">
-            Payment by credit card via GiveButter or by check.<br>
-            Full registration details released April 13, 2026.
-          </p>
+          <p style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1.5rem;letter-spacing:.05em">Full registration details released April 13, 2026.<br>Payment by credit card or check at that time.</p>
         </div>
       </div>
     </div>
@@ -1410,12 +540,8 @@
         <p class="section-label">Our Cause</p>
         <h2 class="section-title">The <em>Hope Center</em></h2>
         <div class="divider-gold"></div>
-        <div class="beneficiary-quote">
-          "Empowering victims and inspiring hope across Converse and Niobrara Counties, Wyoming."
-        </div>
-        <p class="section-body" style="margin-top:2rem;">
-          Net proceeds from every fishing bid, every gala ticket, and every raffle go directly to the Hope Center — providing critical services and support to victims in our community.
-        </p>
+        <div class="beneficiary-quote">"Empowering victims and inspiring hope across Converse and Niobrara Counties, Wyoming."</div>
+        <p class="section-body" style="margin-top:2rem">Net proceeds from every fishing bid, every gala ticket, and every raffle go directly to the Hope Center — providing critical services and support to victims in our community.</p>
         <br>
         <a href="https://wyohopecenter.org" target="_blank" class="btn btn-outline">Visit wyohopecenter.org →</a>
       </div>
@@ -1440,60 +566,39 @@
         <div class="contact-links">
           <a href="tel:4054380193" class="contact-link-item">
             <span class="contact-link-icon">📞</span>
-            <div>
-              <div class="contact-link-text">405.438.0193</div>
-              <div class="contact-link-label">Call April Neubauer</div>
-            </div>
+            <div><div class="contact-link-text">405.438.0193</div><div class="contact-link-label">Call April Neubauer</div></div>
           </a>
           <a href="mailto:aneubauer@caminoresources.com" class="contact-link-item">
             <span class="contact-link-icon">✉️</span>
-            <div>
-              <div class="contact-link-text">aneubauer@caminoresources.com</div>
-              <div class="contact-link-label">April Neubauer · Event Coordinator</div>
-            </div>
+            <div><div class="contact-link-text">aneubauer@caminoresources.com</div><div class="contact-link-label">April Neubauer · Event Coordinator</div></div>
           </a>
           <a href="https://wyohopecenter.org" target="_blank" class="contact-link-item">
             <span class="contact-link-icon">🤝</span>
-            <div>
-              <div class="contact-link-text">wyohopecenter.org</div>
-              <div class="contact-link-label">The Hope Center · Beneficiary</div>
-            </div>
+            <div><div class="contact-link-text">wyohopecenter.org</div><div class="contact-link-label">The Hope Center · Beneficiary</div></div>
           </a>
         </div>
       </div>
       <div class="reveal" style="transition-delay:.15s">
         <p class="contact-action-title">Take Action</p>
         <div class="contact-actions">
-          <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Bid Submission" class="action-item">
+          <a href="Hooked_on_Giving_Brochure_and_Bid_Form.pdf" download class="action-item">
             <span class="action-icon">🎣</span>
-            <div>
-              <div class="action-title">Submit a Tournament Bid</div>
-              <div class="action-sub">Deadline: March 27, 2026 · 5:00 PM MST</div>
-            </div>
-            <span class="action-arrow">→</span>
+            <div><div class="action-title">Download the Bid Form</div><div class="action-sub">Deadline: March 27, 2026 · 5:00 PM MST</div></div>
+            <span class="action-arrow">↓</span>
           </a>
-          <a href="https://givebutter.com/hooked-on-giving" target="_blank" class="action-item">
+          <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Gala Inquiry" class="action-item">
             <span class="action-icon">🥂</span>
-            <div>
-              <div class="action-title">Register for the Gala</div>
-              <div class="action-sub">Registration opens April 13, 2026</div>
-            </div>
+            <div><div class="action-title">Inquire About the Gala</div><div class="action-sub">Registration opens April 13, 2026</div></div>
             <span class="action-arrow">→</span>
           </a>
           <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Sponsorship Inquiry" class="action-item">
             <span class="action-icon">🏅</span>
-            <div>
-              <div class="action-title">Explore Sponsorships</div>
-              <div class="action-sub">Custom opportunities available</div>
-            </div>
+            <div><div class="action-title">Explore Sponsorships</div><div class="action-sub">Custom opportunities available</div></div>
             <span class="action-arrow">→</span>
           </a>
           <a href="https://wyohopecenter.org" target="_blank" class="action-item">
             <span class="action-icon">❤️</span>
-            <div>
-              <div class="action-title">Learn About the Hope Center</div>
-              <div class="action-sub">Your impact in Converse & Niobrara Counties</div>
-            </div>
+            <div><div class="action-title">Learn About the Hope Center</div><div class="action-sub">Your impact in Converse &amp; Niobrara Counties</div></div>
             <span class="action-arrow">→</span>
           </a>
         </div>
@@ -1506,10 +611,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-logo">
-        Hooked on Giving
-        <span>WRC Energy · June 26, 2026 · Casper, Wyoming</span>
-      </div>
+      <div class="footer-logo">Hooked on Giving<span>WRC Energy · June 26, 2026 · Casper, Wyoming</span></div>
       <ul class="footer-links">
         <li><a href="#about">About</a></li>
         <li><a href="#tournament">Tournament</a></li>
@@ -1520,59 +622,38 @@
     </div>
     <div class="footer-bottom">
       Hosted by WRC Energy, LLC &nbsp;·&nbsp; Net proceeds benefit <a href="https://wyohopecenter.org" target="_blank">The Hope Center</a> &nbsp;·&nbsp;
-      Questions: <a href="tel:4054380193">405.438.0193</a> &nbsp;·&nbsp; <a href="mailto:aneubauer@caminoresources.com">aneubauer@caminoresources.com</a>
+      <a href="tel:4054380193">405.438.0193</a> &nbsp;·&nbsp; <a href="mailto:aneubauer@caminoresources.com">aneubauer@caminoresources.com</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // Countdown to June 26, 2026
   function updateCountdown() {
-    const target = new Date('2026-06-26T17:30:00-06:00');
-    const now = new Date();
-    const diff = target - now;
-    if (diff <= 0) { document.getElementById('countdown').style.display = 'none'; return; }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-    document.getElementById('cd-hrs').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
+    const diff = new Date('2026-06-26T17:30:00-06:00') - new Date();
+    if (diff <= 0) { document.getElementById('countdown').style.display='none'; return; }
+    document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('cd-hrs').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cd-min').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-sec').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  updateCountdown(); setInterval(updateCountdown,1000);
 
-  // Mobile nav
   const toggle = document.getElementById('navToggle');
   const mobileNav = document.getElementById('mobileNav');
   toggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
   function closeMobile() { mobileNav.classList.remove('open'); }
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
-  reveals.forEach(r => observer.observe(r));
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
-  // Mission word cycling
   const words = document.querySelectorAll('.mission-word');
   let wi = 0;
-  if (words.length) {
-    words[0].classList.add('active');
-    setInterval(() => {
-      words[wi].classList.remove('active');
-      wi = (wi + 1) % words.length;
-      words[wi].classList.add('active');
-    }, 1800);
-  }
+  if (words.length) { words[0].classList.add('active'); setInterval(() => { words[wi].classList.remove('active'); wi=(wi+1)%words.length; words[wi].classList.add('active'); }, 1800); }
 
-  // Sticky nav shrink
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.background =
-      window.scrollY > 50 ? 'rgba(11,26,43,0.98)' : 'rgba(11,26,43,0.92)';
+    document.querySelector('nav').style.background = window.scrollY > 50 ? 'rgba(11,26,43,0.98)' : 'rgba(11,26,43,0.92)';
   });
 </script>
 </body>
