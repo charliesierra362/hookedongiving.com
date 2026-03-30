@@ -480,6 +480,7 @@
     </div>
     <div style="text-align:center;margin-top:1rem">
       <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary">Make Bid Payment →</a>
+      <p style="margin-top:1.5rem;font-size:.88rem;color:var(--text-muted)">Need help? Contact April Neubauer at <a href="tel:4054380193" style="color:var(--gold);text-decoration:none">405.438.0193</a> or <a href="mailto:aneubauer@caminoresources.com" style="color:var(--gold);text-decoration:none">aneubauer@caminoresources.com</a></p>
     </div>
   </div>
 </section>
@@ -690,4 +691,33 @@
     if (diff <= 0) { document.getElementById('countdown').style.display='none'; return; }
     document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
     document.getElementById('cd-hrs').textContent  = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-    docum
+    document.getElementById('cd-min').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-sec').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  navToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function closeMobile() { mobileNav.classList.remove('open'); }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mission words animation
+  const words = document.querySelectorAll('.mission-word');
+  let wi = 0;
+  setInterval(() => {
+    words.forEach(w => w.classList.remove('active'));
+    if (words[wi]) words[wi].classList.add('active');
+    wi = (wi + 1) % words.length;
+  }, 1200);
+</script>
+</body>
+</html>
