@@ -57,6 +57,7 @@
     .fly-line{position:absolute;top:28%;left:-5%;width:70%;pointer-events:none;animation:castLine 4s ease-in-out infinite alternate}
     @keyframes castLine{0%{transform:rotate(-8deg) scaleX(.7);opacity:.3}100%{transform:rotate(-3deg) scaleX(1);opacity:.6}}
     .hero-content{position:relative;z-index:2;padding:2rem;animation:fadeUp 1.2s ease both}
+    .hero-logo{width:clamp(110px,16vw,170px);height:auto;margin:0 auto 1.5rem;display:block;animation:fadeUp 1s .1s both ease;filter:drop-shadow(0 6px 24px rgba(0,0,0,.4))}
     @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
     .hero-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;animation:fadeUp 1s .2s both ease}
     .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:.95;color:var(--white);margin-bottom:.4rem;animation:fadeUp 1s .4s both ease}
@@ -266,10 +267,8 @@
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#tournament">Tournament</a></li>
     <li><a href="#gala">Gala</a></li>
-    <li><a href="#dayout">Day Out</a></li>
-    <li><a href="#stay">Stay</a></li>
+    <li><a href="#beneficiary">Hope Center</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="nav-cta btn">Tickets &amp; Tables</a></li>
   </ul>
@@ -278,10 +277,8 @@
 
 <div class="mobile-nav" id="mobileNav">
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#tournament" onclick="closeMobile()">Tournament</a>
   <a href="#gala" onclick="closeMobile()">Gala</a>
-  <a href="#dayout" onclick="closeMobile()">Day Out</a>
-  <a href="#stay" onclick="closeMobile()">Stay</a>
+  <a href="#beneficiary" onclick="closeMobile()">Hope Center</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
   <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary" style="text-align:center;margin-top:.5rem">Tickets &amp; Tables</a>
 </div>
@@ -299,6 +296,7 @@
     <ellipse cx="570" cy="9" rx="8" ry="3" fill="#c9a84c" opacity="0.35" transform="rotate(-15 570 9)"/>
   </svg>
   <div class="hero-content">
+    <img src="logo.png" alt="Hooked on Giving logo" class="hero-logo" />
     <p class="hero-eyebrow">WRC Energy Presents</p>
     <h1 class="hero-title">Hooked<br>on <em>Giving</em></h1>
     <p class="hero-subtitle">1st Annual Fly-Fishing Tournament &amp; Gala</p>
@@ -328,19 +326,6 @@
   </div>
   <div class="hero-scroll" aria-hidden="true"><span>Explore</span><div class="hero-scroll-line"></div></div>
 </section>
-
-<!-- DEADLINE BANNER -->
-<div class="deadline-banner">
-  <div class="deadline-banner-inner">
-    <div class="deadline-item"><div class="deadline-val">$5,000</div><div class="deadline-lbl">Minimum Bid Per Boat</div></div>
-    <div class="deadline-pipe"></div>
-    <div class="deadline-item"><div class="deadline-val">20</div><div class="deadline-lbl">Boat Spots Available</div></div>
-    <div class="deadline-pipe"></div>
-    <div class="deadline-item"><div class="deadline-val">Mar 27</div><div class="deadline-lbl">Bid Deadline · 5:00 PM MST</div></div>
-    <div class="deadline-pipe"></div>
-    <div class="deadline-item"><div class="deadline-val">100%</div><div class="deadline-lbl">Tax-Deductible</div></div>
-  </div>
-</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -392,38 +377,6 @@
   </div>
 </div>
 
-<!-- TOURNAMENT -->
-<section id="tournament">
-  <div class="section-inner">
-    <div class="tournament-header reveal">
-      <p class="section-label">Fly-Fishing Tournament</p>
-      <h2 class="section-title">Compete on<br><em>Blue-Ribbon Waters</em></h2>
-      <div class="divider-gold"></div>
-      <p class="section-body">Secure your spot on the legendary North Platte River through competitive bidding. The top 20 bids win access to this exclusive tournament — with each team paired with an experienced local guide.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num">01</div>
-        <div class="step-icon">📋</div>
-        <div class="step-title">Download &amp; Submit Your Bid</div>
-        <p class="step-desc">Minimum bid is <span class="step-highlight">$5,000 per boat</span> (2 participants). Download the bid form below, complete all fields, and return to <a href="mailto:aneubauer@caminoresources.com" style="color:var(--gold);text-decoration:none">aneubauer@caminoresources.com</a> by <span class="step-highlight">March 27, 2026 at 5:00 PM MST.</span></p>
-      </div>
-      <div class="step-card reveal" style="transition-delay:.1s">
-        <div class="step-num">02</div>
-        <div class="step-icon">🏆</div>
-        <div class="step-title">Winners Selected</div>
-        <p class="step-desc">The <span class="step-highlight">top 20 highest bids</span> secure a boat spot. Ties resolved by random draw. Winners notified by <span class="step-highlight">March 30, 2026.</span></p>
-      </div>
-      <div class="step-card reveal" style="transition-delay:.2s">
-        <div class="step-num">03</div>
-        <div class="step-icon">💳</div>
-        <div class="step-title">Complete Payment</div>
-        <p class="step-desc">Full payment due by <span class="step-highlight">April 10, 2026.</span> Unpaid spots forfeited to the next highest bidder. All bids are non-refundable tax-deductible donations.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- GALA -->
 <section id="gala">
   <div class="section-inner">
@@ -455,16 +408,6 @@
             <div class="gala-day">26</div>
             <div class="gala-year">5:30 PM · Casper, Wyoming</div>
           </div>
-          <div class="gala-ticket-opts">
-            <div class="ticket-opt">
-              <div><div class="ticket-opt-name">Table for 8</div><div class="ticket-opt-sub">Reserved seating for your group</div></div>
-              <div class="ticket-opt-price">$1,500</div>
-            </div>
-            <div class="ticket-opt">
-              <div><div class="ticket-opt-name">Individual Admission</div><div class="ticket-opt-sub">General seating</div></div>
-              <div class="ticket-opt-price">$200</div>
-            </div>
-          </div>
           <p style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1.5rem;letter-spacing:.05em">Full registration details released April 13, 2026.<br>Payment by credit card or check at that time.</p>
         </div>
       </div>
@@ -490,210 +433,6 @@
         <div class="mission-word">Inspire.</div>
         <div class="mission-word">Serve.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCOMMODATIONS -->
-<section id="stay" style="padding:7rem 0;background:linear-gradient(180deg,#0b1a2b 0%,#0a1822 100%)">
-  <div class="section-inner">
-    <div class="tournament-header reveal">
-      <p class="section-label">Where to Stay</p>
-      <h2 class="section-title">Casper <em>Accommodations</em></h2>
-      <div class="divider-gold"></div>
-      <p class="section-body">Plan your trip to Casper with these recommended hotels. We suggest booking early — June is peak season on the North Platte.</p>
-    </div>
-
-    <!-- Featured hotel: Hilton Garden Inn -->
-    <div class="reveal" style="max-width:900px;margin:0 auto 3rem;background:linear-gradient(135deg,rgba(30,73,118,0.18) 0%,rgba(201,168,76,0.06) 100%);border:1px solid rgba(201,168,76,0.28);border-radius:4px;padding:2.5rem 2.5rem 2rem;position:relative">
-      <div style="position:absolute;top:-12px;left:2.5rem;background:var(--gold);color:var(--navy);font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:.35rem .9rem;border-radius:2px">Host Hotel</div>
-      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem">
-        <span style="font-size:1.3rem">🏨</span>
-        <p style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">Hilton Garden Inn Casper</p>
-      </div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.15">Comfortable stays, <em style="color:var(--gold)">minutes from the river</em></h3>
-      <p style="color:var(--text-light);font-size:.98rem;line-height:1.7;margin-bottom:1.75rem;max-width:640px">Spacious rooms, on-site restaurant, and a convenient west-Casper location just off I-25. Our recommended hotel for tournament participants and gala guests alike.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;margin-bottom:1.75rem">
-        <div>
-          <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem">Address</div>
-          <div style="color:var(--cream);font-size:.92rem;line-height:1.5">1150 N Poplar St<br>Casper, WY 82601</div>
-        </div>
-        <div>
-          <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem">Reservations</div>
-          <div style="color:var(--cream);font-size:.92rem;line-height:1.5"><a href="tel:3072661300" style="color:var(--gold);text-decoration:none">307.266.1300</a></div>
-        </div>
-        <div>
-          <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem">Guest Rating</div>
-          <div style="color:var(--cream);font-size:.92rem;line-height:1.5">4.3 ★ · 830+ reviews</div>
-        </div>
-      </div>
-      <a href="https://www.hilton.com/en/hotels/cprcagi-hilton-garden-inn-casper/" target="_blank" rel="noopener" class="btn btn-primary">Book at Hilton.com →</a>
-    </div>
-
-    <!-- Additional options -->
-    <div class="reveal" style="text-align:center;margin-bottom:2rem">
-      <p style="font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Additional Options</p>
-      <div style="width:40px;height:1px;background:var(--gold);opacity:.4;margin:0 auto"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:900px;margin:0 auto">
-      <div class="reveal" style="background:rgba(17,45,74,0.35);border:1px solid rgba(201,168,76,0.14);border-radius:4px;padding:1.75rem;transition:border-color .25s;display:flex;flex-direction:column">
-        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-          <span style="font-size:1.1rem">🌊</span>
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)">On the River</p>
-        </div>
-        <h4 style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.2">Riverside Hotel &amp; Conference Center</h4>
-        <p style="color:var(--text-light);font-size:.9rem;line-height:1.6;margin-bottom:1.25rem;flex:1">Set directly on the North Platte with walking-path access — a fitting stay for a fly-fishing weekend.</p>
-        <div style="font-size:.85rem;color:var(--cream);line-height:1.6;margin-bottom:1.25rem">
-          300 W F St, Casper, WY<br>
-          <a href="tel:3072150055" style="color:var(--gold);text-decoration:none">307.215.0055</a>
-        </div>
-        <a href="https://www.wyndhamhotels.com/trademark/casper-wyoming/riverside-hotel-conference-center/overview" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:.7rem;padding:.8rem 1.6rem;align-self:flex-start">Visit Website →</a>
-      </div>
-
-      <div class="reveal" style="background:rgba(17,45,74,0.35);border:1px solid rgba(201,168,76,0.14);border-radius:4px;padding:1.75rem;transition:border-color .25s;display:flex;flex-direction:column;transition-delay:.1s">
-        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-          <span style="font-size:1.1rem">🏛️</span>
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)">Downtown</p>
-        </div>
-        <h4 style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.2">Best Western Downtown Casper</h4>
-        <p style="color:var(--text-light);font-size:.9rem;line-height:1.6;margin-bottom:1.25rem;flex:1">Central downtown location with on-site restaurant — convenient for walking to dinner and evening plans.</p>
-        <div style="font-size:.85rem;color:var(--cream);line-height:1.6;margin-bottom:1.25rem">
-          123 W E St, Casper, WY<br>
-          <a href="tel:3074392074" style="color:var(--gold);text-decoration:none">307.439.2074</a>
-        </div>
-        <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.51075.html" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:.7rem;padding:.8rem 1.6rem;align-self:flex-start">Visit Website →</a>
-      </div>
-
-      <div class="reveal" style="background:rgba(17,45,74,0.35);border:1px solid rgba(201,168,76,0.14);border-radius:4px;padding:1.75rem;transition:border-color .25s;display:flex;flex-direction:column;transition-delay:.15s">
-        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-          <span style="font-size:1.1rem">🏨</span>
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)">Next Door</p>
-        </div>
-        <h4 style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.2">Hampton Inn &amp; Suites Casper</h4>
-        <p style="color:var(--text-light);font-size:.9rem;line-height:1.6;margin-bottom:1.25rem;flex:1">Right next to the host hotel on Poplar St. Recently refreshed rooms and a consistently strong guest rating.</p>
-        <div style="font-size:.85rem;color:var(--cream);line-height:1.6;margin-bottom:1.25rem">
-          1100 N Poplar St, Casper, WY<br>
-          <a href="tel:3072356668" style="color:var(--gold);text-decoration:none">307.235.6668</a>
-        </div>
-        <a href="https://www.hilton.com/en/hotels/cprwyhx-hampton-suites-casper/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:.7rem;padding:.8rem 1.6rem;align-self:flex-start">Book Hotel Block →</a>
-      </div>
-
-      <div class="reveal" style="background:rgba(17,45,74,0.35);border:1px solid rgba(201,168,76,0.14);border-radius:4px;padding:1.75rem;transition:border-color .25s;display:flex;flex-direction:column;transition-delay:.2s">
-        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-          <span style="font-size:1.1rem">✨</span>
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)">Newest Build</p>
-        </div>
-        <h4 style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.2">Hyatt Place Casper</h4>
-        <p style="color:var(--text-light);font-size:.9rem;line-height:1.6;margin-bottom:1.25rem;flex:1">Modern rooms, saltwater pool, and an on-site bar. Casper's newest hotel, located on the east side.</p>
-        <div style="font-size:.85rem;color:var(--cream);line-height:1.6;margin-bottom:1.25rem">
-          407 N Walsh Dr, Casper, WY<br>
-          <a href="tel:3074520810" style="color:var(--gold);text-decoration:none">307.452.0810</a>
-        </div>
-        <a href="https://www.hyatt.com/hyatt-place/en-US/cprzc-hyatt-place-casper" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:.7rem;padding:.8rem 1.6rem;align-self:flex-start">Book Hotel Block →</a>
-      </div>
-    </div>
-
-    <div class="reveal" style="text-align:center;margin-top:3rem">
-      <p style="font-size:.88rem;color:var(--text-muted)">When booking, mention you're attending <span style="color:var(--gold)">Hooked on Giving</span> — some properties may offer event rates.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SPOUSE / DATE DAY OUT -->
-<section id="dayout" style="padding:7rem 0;background:linear-gradient(180deg,#0a1822 0%,#112235 50%,#0a1822 100%);position:relative">
-  <div class="section-inner">
-    <div class="tournament-header reveal">
-      <p class="section-label">For Spouses &amp; Dates</p>
-      <h2 class="section-title">A Day of Your <em>Own</em></h2>
-      <div class="divider-gold"></div>
-      <p class="section-body">While your partner is on the river, Casper is yours to enjoy. We've curated a day that blends history, indulgence, and Wyoming charm — pace it however you like.</p>
-    </div>
-
-    <!-- Timeline of the day -->
-    <div style="max-width:900px;margin:0 auto;position:relative">
-      <!-- Vertical timeline line -->
-      <div style="position:absolute;left:34px;top:20px;bottom:20px;width:1px;background:linear-gradient(to bottom,transparent 0%,rgba(201,168,76,.4) 10%,rgba(201,168,76,.4) 90%,transparent 100%);display:block" class="timeline-line"></div>
-
-      <!-- MORNING -->
-      <div class="reveal" style="position:relative;padding-left:90px;margin-bottom:2.75rem">
-        <div style="position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid var(--navy);box-shadow:0 0 0 1px rgba(201,168,76,.3)">☕</div>
-        <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Morning · 8:00 – 10:30 AM</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:.75rem;line-height:1.2">Slow Start, <em style="color:var(--gold)">Sweet Beginnings</em></h3>
-        <p style="color:var(--text-light);font-size:.97rem;line-height:1.7;margin-bottom:1rem">Start with coffee at <strong style="color:var(--cream)">CitiWerks Cafe</strong> — an upscale downtown coffeehouse attached to the event space, serving pour-overs, fresh-baked baguettes, and a small but excellent breakfast menu on real china. For something heartier, <strong style="color:var(--cream)">Sherrie's Place</strong> is a beloved local diner where the cinnamon rolls are legend and every regular is greeted by name. Or linger at <strong style="color:var(--cream)">Cottage Cafe</strong>, tucked inside a converted historic home — house-made pastries and unhurried service.</p>
-        <div style="font-size:.85rem;color:var(--text-muted);line-height:1.6">
-          <span style="color:var(--gold-light)">◆</span> CitiWerks Cafe · 162 S Wolcott St<br>
-          <span style="color:var(--gold-light)">◆</span> Sherrie's Place · 310 W Yellowstone Hwy<br>
-          <span style="color:var(--gold-light)">◆</span> Cottage Cafe · 116 S Lincoln St
-        </div>
-      </div>
-
-      <!-- LATE MORNING -->
-      <div class="reveal" style="position:relative;padding-left:90px;margin-bottom:2.75rem;transition-delay:.1s">
-        <div style="position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid var(--navy);box-shadow:0 0 0 1px rgba(201,168,76,.3)">🏛️</div>
-        <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Late Morning · 10:30 AM – 12:30 PM</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:.75rem;line-height:1.2">Where the Trails <em style="color:var(--gold)">Converged</em></h3>
-        <p style="color:var(--text-light);font-size:.97rem;line-height:1.7;margin-bottom:1rem">Casper is the only point in the nation where the Oregon, California, Mormon, and Pony Express Trails crossed paths. The <strong style="color:var(--cream)">National Historic Trails Interpretive Center</strong> brings that history to life with award-winning films and an immersive covered-wagon river-crossing simulator. Free admission, about 90 minutes to explore — and it's just up Poplar Street from the host hotel.</p>
-        <p style="color:var(--text-light);font-size:.92rem;line-height:1.7;font-style:italic;padding:.9rem 1.1rem;border-left:2px solid rgba(201,168,76,.3);background:rgba(201,168,76,.04);margin-top:.75rem">Prefer something quieter? The <strong style="color:var(--cream);font-style:normal">Nicolaysen Art Museum</strong> ("The Nic") on Collins Drive features rotating contemporary exhibits with a distinctly Wyoming sensibility.</p>
-        <div style="font-size:.85rem;color:var(--text-muted);line-height:1.6;margin-top:1rem">
-          <span style="color:var(--gold-light)">◆</span> Interpretive Center · 1501 N Poplar St
-        </div>
-      </div>
-
-      <!-- MIDDAY -->
-      <div class="reveal" style="position:relative;padding-left:90px;margin-bottom:2.75rem;transition-delay:.15s">
-        <div style="position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid var(--navy);box-shadow:0 0 0 1px rgba(201,168,76,.3)">🥂</div>
-        <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Lunch · 12:30 – 2:00 PM</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:.75rem;line-height:1.2">Lunch in <em style="color:var(--gold)">Downtown Casper</em></h3>
-        <p style="color:var(--text-light);font-size:.97rem;line-height:1.7;margin-bottom:1rem">Head downtown for lunch and a stroll. <strong style="color:var(--cream)">Racca's Pizzeria Napoletana</strong> serves authentic coal-fired pies; <strong style="color:var(--cream)">The Branding Iron</strong> plates Wyoming-raised Black Angus burgers (their Kona Burger took Travel Channel's Best in Wyoming in 2019); or for something upscale and elegant, <strong style="color:var(--cream)">The Refinery at Three Crowns</strong> overlooks the golf course with a spectacular view.</p>
-      </div>
-
-      <!-- AFTERNOON -->
-      <div class="reveal" style="position:relative;padding-left:90px;margin-bottom:2.75rem;transition-delay:.2s">
-        <div style="position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid var(--navy);box-shadow:0 0 0 1px rgba(201,168,76,.3)">💆</div>
-        <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Afternoon · 2:00 – 5:00 PM</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:.75rem;line-height:1.2">Indulge, Browse, or <em style="color:var(--gold)">Wander</em></h3>
-        <p style="color:var(--text-light);font-size:.97rem;line-height:1.7;margin-bottom:1.25rem">Choose your pace. A full afternoon of options, all within a few minutes of downtown:</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin-top:.5rem">
-          <div style="background:rgba(17,45,74,0.3);border:1px solid rgba(201,168,76,0.14);border-radius:3px;padding:1.1rem 1.2rem">
-            <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem">Spa &amp; Self-Care</div>
-            <div style="color:var(--cream);font-size:.92rem;font-weight:600;margin-bottom:.2rem">Saguaro Medi Spa</div>
-            <div style="color:var(--text-muted);font-size:.82rem">Downtown · 5.0 ★</div>
-          </div>
-          <div style="background:rgba(17,45,74,0.3);border:1px solid rgba(201,168,76,0.14);border-radius:3px;padding:1.1rem 1.2rem">
-            <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem">Boutique Shopping</div>
-            <div style="color:var(--cream);font-size:.92rem;font-weight:600;margin-bottom:.2rem">Historic Downtown</div>
-            <div style="color:var(--text-muted);font-size:.82rem">Mustard Seed · Cadillac Cowgirl · Wind City Books</div>
-          </div>
-          <div style="background:rgba(17,45,74,0.3);border:1px solid rgba(201,168,76,0.14);border-radius:3px;padding:1.1rem 1.2rem">
-            <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem">Scenic Drive</div>
-            <div style="color:var(--cream);font-size:.92rem;font-weight:600;margin-bottom:.2rem">Casper Mountain Road</div>
-            <div style="color:var(--text-muted);font-size:.82rem">Summit views · stop at Garden Creek Falls</div>
-          </div>
-          <div style="background:rgba(17,45,74,0.3);border:1px solid rgba(201,168,76,0.14);border-radius:3px;padding:1.1rem 1.2rem">
-            <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.4rem">Sweet Break</div>
-            <div style="color:var(--cream);font-size:.92rem;font-weight:600;margin-bottom:.2rem">Rialto Soda Fountain</div>
-            <div style="color:var(--text-muted);font-size:.82rem">Old-fashioned ice cream · downtown</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EARLY EVENING -->
-      <div class="reveal" style="position:relative;padding-left:90px;margin-bottom:0;transition-delay:.25s">
-        <div style="position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid var(--navy);box-shadow:0 0 0 1px rgba(201,168,76,.3)">🥃</div>
-        <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Before the Gala · 4:00 – 5:15 PM</p>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:.75rem;line-height:1.2">A Pre-Gala <em style="color:var(--gold)">Cocktail</em></h3>
-        <p style="color:var(--text-light);font-size:.97rem;line-height:1.7;margin-bottom:1rem">Cap the day with a hand-crafted cocktail at <strong style="color:var(--cream)">Backwards Distilling Company</strong> on Wolcott Street — locally distilled spirits, creative drinks, and a warm downtown room to toast what's been a perfect day before you reconvene with your partner at the gala.</p>
-        <div style="font-size:.85rem;color:var(--text-muted);line-height:1.6">
-          <span style="color:var(--gold-light)">◆</span> Backwards Distilling · 214 S Wolcott St
-        </div>
-      </div>
-    </div>
-
-    <!-- Closing note -->
-    <div class="reveal" style="text-align:center;margin-top:4rem;max-width:640px;margin-left:auto;margin-right:auto">
-      <div style="width:60px;height:1px;background:var(--gold);opacity:.4;margin:0 auto 1.5rem"></div>
-      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--text-light);line-height:1.5">The gala begins at 5:30 PM — plenty of time to return to your hotel, refresh, and join us for the evening.</p>
     </div>
   </div>
 </section>
@@ -758,11 +497,10 @@
       <div class="footer-logo">Hooked on Giving<span>WRC Energy · June 26, 2026 · Casper, Wyoming</span></div>
       <ul class="footer-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#tournament">Tournament</a></li>
         <li><a href="#gala">Gala</a></li>
-        <li><a href="#dayout">Day Out</a></li>
-        <li><a href="#stay">Stay</a></li>
-        <li><a href="https://wyohopecenter.org" target="_blank">Hope Center</a></li>
+        <li><a href="#beneficiary">Hope Center</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wyohopecenter.org" target="_blank">wyohopecenter.org</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
