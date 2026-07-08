@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WRC's Hooked on Giving | June 26, 2026</title>
+  <title>WRC's Hooked on Giving | 2026 Recap — $212,000 Raised</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -227,6 +227,37 @@
     .countdown-unit{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-top:.3rem}
     .countdown-sep{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,168,76,.3);padding-top:.25rem}
 
+    /* RAISED BANNER (post-event hero) */
+    .raised-banner{margin:1.5rem auto 0;display:inline-block;padding:1.6rem 3rem;border:1px solid rgba(201,168,76,.4);border-radius:4px;background:rgba(201,168,76,.06);animation:fadeUp 1s .9s both ease}
+    .raised-label{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+    .raised-amount{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5rem);font-weight:900;color:var(--gold);line-height:1}
+    .raised-for{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--cream);margin-top:.5rem}
+
+    /* RECAP */
+    #recap{padding:7rem 0;background:linear-gradient(180deg,var(--navy) 0%,#0a1822 100%)}
+    .recap-header{text-align:center;max-width:680px;margin:0 auto 3rem}
+    .recap-header .divider-gold{margin:1.5rem auto}
+    .recap-video-wrap{max-width:640px;margin:0 auto;position:relative;border:1px solid rgba(201,168,76,.35);border-radius:6px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+    .recap-video-wrap video{display:block;width:100%;height:auto;background:#000}
+    .recap-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem}
+    .recap-stat{text-align:center}
+    .recap-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold)}
+    .recap-stat .lbl{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-top:.3rem}
+
+    /* SPONSOR THANK YOU */
+    #sponsors{padding:7rem 0;background:var(--navy)}
+    .sponsors-header{text-align:center;max-width:720px;margin:0 auto 4rem}
+    .sponsors-header .divider-gold{margin:1.5rem auto}
+    .tier-block{max-width:900px;margin:0 auto 3rem;text-align:center}
+    .tier-name{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.6rem}
+    .tier-name span{font-size:.72rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+    .tier-name::before,.tier-name::after{content:'';width:50px;height:1px;background:rgba(201,168,76,.35)}
+    .tier-list{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
+    .tier-chip{padding:.65rem 1.3rem;border:1px solid rgba(201,168,76,.22);border-radius:3px;background:rgba(255,255,255,.02);font-size:.85rem;font-weight:500;color:var(--text-light);letter-spacing:.03em;transition:all .25s}
+    .tier-chip:hover{border-color:var(--gold);color:var(--cream);background:rgba(201,168,76,.07);transform:translateY(-2px)}
+    .tier-platinum .tier-chip{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--gold-light);border-color:rgba(201,168,76,.45);padding:.9rem 1.8rem}
+    .tier-gold .tier-chip{font-size:.95rem;font-weight:600;color:var(--cream);border-color:rgba(201,168,76,.32)}
+
     /* RESPONSIVE */
     @media(max-width:900px){
       .nav-links{display:none}.nav-toggle{display:flex}
@@ -266,21 +297,25 @@
     <div class="nav-logo-text">Hooked on Giving<span>WRC Energy · June 26, 2026</span></div>
   </a>
   <ul class="nav-links">
+    <li><a href="#recap">Recap</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#gala">Gala</a></li>
     <li><a href="#beneficiary">Hope Center</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="nav-cta btn">Tickets &amp; Tables</a></li>
+    <li><a href="#recap" class="nav-cta btn" style="background:transparent !important;border:1px solid rgba(201,168,76,.5);color:var(--gold) !important">Watch the Recap</a></li>
+    <li><a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="nav-cta btn">Donate</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
+  <a href="#recap" onclick="closeMobile()">Recap</a>
+  <a href="#sponsors" onclick="closeMobile()">Sponsors</a>
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#gala" onclick="closeMobile()">Gala</a>
   <a href="#beneficiary" onclick="closeMobile()">Hope Center</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary" style="text-align:center;margin-top:.5rem">Tickets &amp; Tables</a>
+  <a href="#recap" onclick="closeMobile()" class="btn btn-outline" style="text-align:center;margin-top:.5rem">Watch the Recap</a>
+  <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary" style="text-align:center">Donate</a>
 </div>
 
 <!-- HERO -->
@@ -297,31 +332,28 @@
   </svg>
   <div class="hero-content">
     <img src="logo.png" alt="Hooked on Giving logo" class="hero-logo" />
-    <p class="hero-eyebrow">WRC Energy Presents</p>
+    <p class="hero-eyebrow">WRC Energy Presents · 2026 Recap</p>
     <h1 class="hero-title">Hooked<br>on <em>Giving</em></h1>
-    <p class="hero-subtitle">1st Annual Fly-Fishing Tournament &amp; Gala</p>
+    <p class="hero-subtitle">Thank you, Casper — what an incredible first year.</p>
     <div class="hero-divider">
       <div class="hero-divider-line"></div>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="#c9a84c" opacity="0.7" aria-hidden="true"><path d="M12 2C9 4 6 7 6 11c0 3.3 2.7 6 6 7 2-1 6-3.7 6-7 0-4-3-7-6-9z"/></svg>
       <div class="hero-divider-line"></div>
     </div>
     <div class="hero-meta">
-      <div class="hero-meta-item"><span class="label">Date</span><span class="value">June 26, 2026</span></div>
+      <div class="hero-meta-item"><span class="label">Held</span><span class="value">June 26, 2026</span></div>
       <div class="hero-meta-item"><span class="label">Location</span><span class="value">North Platte River, Casper, WY</span></div>
       <div class="hero-meta-item"><span class="label">Benefiting</span><span class="value">The Hope Center</span></div>
     </div>
-    <div class="countdown" id="countdown">
-      <div class="countdown-block"><div class="countdown-num" id="cd-days">--</div><div class="countdown-unit">Days</div></div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-block"><div class="countdown-num" id="cd-hrs">--</div><div class="countdown-unit">Hours</div></div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-block"><div class="countdown-num" id="cd-min">--</div><div class="countdown-unit">Min</div></div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-block"><div class="countdown-num" id="cd-sec">--</div><div class="countdown-unit">Sec</div></div>
+    <div class="raised-banner">
+      <div class="raised-label">Together We Raised</div>
+      <div class="raised-amount">$212,000</div>
+      <div class="raised-for">for the Hope Center</div>
     </div><br>
     <div class="hero-buttons">
-      <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary">Tickets &amp; Tables</a>
-      <a href="#about" class="btn btn-outline">Learn More</a>
+      <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary">Donate</a>
+      <a href="#recap" class="btn btn-outline">Watch the Recap</a>
+      <a href="#sponsors" class="btn btn-outline">Thank You, Sponsors</a>
     </div>
   </div>
   <div class="hero-scroll" aria-hidden="true"><span>Explore</span><div class="hero-scroll-line"></div></div>
@@ -376,6 +408,111 @@
     </div>
   </div>
 </div>
+
+<!-- RECAP -->
+<section id="recap">
+  <div class="section-inner">
+    <div class="recap-header reveal">
+      <p class="section-label">2026 Recap</p>
+      <h2 class="section-title">Relive the <em>Magic</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-body" style="margin:0 auto">From tight lines on the North Platte to a spirited live auction under Wyoming skies — our first annual Hooked on Giving raised <strong style="color:var(--gold)">$212,000</strong> for the Hope Center. Watch the highlights below.</p>
+    </div>
+    <div class="recap-video-wrap reveal">
+      <video controls playsinline preload="metadata">
+        <source src="Hooked_on_Giving_2026_Recap.mp4" type="video/mp4" />
+        Your browser does not support the video tag. <a href="Hooked_on_Giving_2026_Recap.mp4">Download the recap video</a>.
+      </video>
+    </div>
+    <div class="recap-stats reveal">
+      <div class="recap-stat"><div class="num">$212K</div><div class="lbl">Net Raised</div></div>
+      <div class="recap-stat"><div class="num">40</div><div class="lbl">Anglers</div></div>
+      <div class="recap-stat"><div class="num">20</div><div class="lbl">Boats</div></div>
+      <div class="recap-stat"><div class="num">1</div><div class="lbl">Community United</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOR THANK YOU -->
+<section id="sponsors">
+  <div class="section-inner">
+    <div class="sponsors-header reveal">
+      <p class="section-label">With Deep Gratitude</p>
+      <h2 class="section-title">Thank You to Our <em>Sponsors</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-body" style="margin:0 auto">Every dollar raised is a direct reflection of the generosity of the businesses below. Thank you for casting a line of hope to survivors of crime across Converse and Niobrara Counties.</p>
+    </div>
+
+    <div class="tier-block tier-platinum reveal">
+      <div class="tier-name"><span>✦ Platinum</span></div>
+      <div class="tier-list">
+        <div class="tier-chip">ArcoTech Drilling Solutions</div>
+        <div class="tier-chip">S&amp;T Oilfield Services LLP</div>
+        <div class="tier-chip">Diamond Oil &amp; Gas LLC</div>
+        <div class="tier-chip">Freedom Fuels USA Inc</div>
+        <div class="tier-chip">Canvasback Resources</div>
+        <div class="tier-chip">P2 Energy Services</div>
+        <div class="tier-chip">US Steel</div>
+      </div>
+    </div>
+
+    <div class="tier-block tier-gold reveal">
+      <div class="tier-name"><span>✦ Gold</span></div>
+      <div class="tier-list">
+        <div class="tier-chip">True Companies / Bridger Pipeline</div>
+        <div class="tier-chip">TTS (Thru Tubing Solutions)</div>
+        <div class="tier-chip">Newpark Drilling Fluids</div>
+        <div class="tier-chip">Oil Patch Group</div>
+        <div class="tier-chip">Beck Crane</div>
+      </div>
+    </div>
+
+    <div class="tier-block reveal">
+      <div class="tier-name"><span>✦ Silver</span></div>
+      <div class="tier-list">
+        <div class="tier-chip">Instrument &amp; Equipment Tech</div>
+        <div class="tier-chip">Kearney, McWilliams &amp; Davis</div>
+        <div class="tier-chip">Liberty Lift Solutions LLC</div>
+        <div class="tier-chip">Allstates Production Equip</div>
+        <div class="tier-chip">Impulse Downhole Tools</div>
+        <div class="tier-chip">Saddle Butte Pipeline</div>
+        <div class="tier-chip">Lobo &amp; On Point Tech</div>
+        <div class="tier-chip">Calfrac Well Service</div>
+        <div class="tier-chip">Earthworks Solutions</div>
+        <div class="tier-chip">Southwest Energy LP</div>
+        <div class="tier-chip">S&amp;R Vapor Recovery</div>
+        <div class="tier-chip">KLX Energy Services</div>
+        <div class="tier-chip">True Pipe &amp; Supply</div>
+        <div class="tier-chip">True Drilling Co</div>
+        <div class="tier-chip">Karst Industries</div>
+        <div class="tier-chip">Rolfson Oil LLC</div>
+        <div class="tier-chip">JACAM Catalyst</div>
+        <div class="tier-chip">HFSinclair</div>
+        <div class="tier-chip">DarkVision</div>
+        <div class="tier-chip">Rigup</div>
+      </div>
+    </div>
+
+    <div class="tier-block reveal">
+      <div class="tier-name"><span>✦ Donors</span></div>
+      <div class="tier-list">
+        <div class="tier-chip">Mojo Geological Consulting</div>
+        <div class="tier-chip">Newkota Services &amp; Rentals</div>
+        <div class="tier-chip">Panhandle Oilfield Service</div>
+        <div class="tier-chip">Dull Knife Ag &amp; Equipment</div>
+        <div class="tier-chip">Twin Peaks Pump &amp; Supply</div>
+        <div class="tier-chip">Energy Environmental</div>
+        <div class="tier-chip">Jost Energy Law PC</div>
+        <div class="tier-chip">Balon Corporation</div>
+        <div class="tier-chip">Ball Morse Lowe</div>
+        <div class="tier-chip">Gravity Oil Field</div>
+        <div class="tier-chip">Tyrell Marlow</div>
+        <div class="tier-chip">Victaulic</div>
+        <div class="tier-chip">Pason</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- GALA -->
 <section id="gala">
@@ -465,8 +602,13 @@
         <p class="contact-action-title">Take Action</p>
         <div class="contact-actions">
           <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="action-item">
+            <span class="action-icon">💛</span>
+            <div><div class="action-title">Donate</div><div class="action-sub">Give directly through WRC Charities on Givebutter</div></div>
+            <span class="action-arrow">→</span>
+          </a>
+          <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving 2027 - Interest" class="action-item">
             <span class="action-icon">🎣</span>
-            <div><div class="action-title">Tickets &amp; Tables</div><div class="action-sub">Deadline: April 10, 2026</div></div>
+            <div><div class="action-title">Join Us in 2027</div><div class="action-sub">Get on the list for next year's event</div></div>
             <span class="action-arrow">→</span>
           </a>
           <a href="mailto:aneubauer@caminoresources.com?subject=Hooked on Giving - Gala Inquiry" class="action-item">
@@ -494,10 +636,11 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-logo">Hooked on Giving<span>WRC Energy · June 26, 2026 · Casper, Wyoming</span></div>
+      <div class="footer-logo">Hooked on Giving<span>WRC Energy · $212,000 Raised for the Hope Center · See You in 2027</span></div>
       <ul class="footer-links">
+        <li><a href="#recap">Recap</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#gala">Gala</a></li>
         <li><a href="#beneficiary">Hope Center</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://wyohopecenter.org" target="_blank">wyohopecenter.org</a></li>
@@ -514,17 +657,6 @@
 </footer>
 
 <script>
-  function updateCountdown() {
-    const diff = new Date('2026-06-26T17:30:00-06:00') - new Date();
-    if (diff <= 0) { document.getElementById('countdown').style.display='none'; return; }
-    document.getElementById('cd-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-    document.getElementById('cd-hrs').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
   // Mobile nav toggle
   function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
   document.getElementById('navToggle').addEventListener('click', function() {
