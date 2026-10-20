@@ -182,6 +182,14 @@
     .amenity-dot{width:6px;height:6px;border-radius:50%;background:var(--sage-light);flex-shrink:0}
     .coming-soon-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(78,112,89,.2);border:1px solid rgba(106,148,116,.3);border-radius:2px;padding:.5rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-light);margin-top:2rem;margin-bottom:1.5rem}
 
+    /* CAMINO — SAME ROAD, TWO STATES */
+    #camino{padding:7rem 0;background:linear-gradient(180deg,var(--navy) 0%,var(--river) 55%,var(--navy) 100%)}
+    .camino-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}
+    .camino-stats{display:grid;grid-template-columns:1fr;gap:1.2rem}
+    .camino-kicker{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--text-light);margin-top:1.8rem}
+    .camino-note{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-top:1.4rem}
+    @media (max-width:860px){.camino-grid{grid-template-columns:1fr;gap:2.5rem}}
+
     /* BENEFICIARY */
     #beneficiary{padding:7rem 0;background:var(--navy)}
     .beneficiary-inner{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:center}
@@ -301,6 +309,7 @@
     <li><a href="#sponsors">Sponsors</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#beneficiary">Hope Center</a></li>
+    <li><a href="#camino">Camino</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#recap" class="nav-cta btn" style="background:transparent !important;border:1px solid rgba(201,168,76,.5);color:var(--gold) !important">Watch the Recap</a></li>
     <li><a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="nav-cta btn">Donate</a></li>
@@ -313,6 +322,7 @@
   <a href="#sponsors" onclick="closeMobile()">Sponsors</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#beneficiary" onclick="closeMobile()">Hope Center</a>
+  <a href="#camino" onclick="closeMobile()">Camino</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
   <a href="#recap" onclick="closeMobile()" class="btn btn-outline" style="text-align:center;margin-top:.5rem">Watch the Recap</a>
   <a href="https://givebutter.com/c/hooked-on-giving" target="_blank" class="btn btn-primary" style="text-align:center">Donate</a>
@@ -574,6 +584,29 @@
   </div>
 </section>
 
+<!-- SAME ROAD, TWO STATES -->
+<section id="camino">
+  <div class="section-inner">
+    <div class="camino-grid">
+      <div class="reveal">
+        <p class="section-label">Same Road, Two States</p>
+        <h2 class="section-title">The Giving Culture <em>Travels.</em></h2>
+        <div class="divider-gold"></div>
+        <p class="section-body" style="margin-top:2rem">WRC Energy and Camino Natural Resources are two companies run by one management team — Wyoming's Powder River Basin and Oklahoma's Anadarko Basin. Hooked on Giving follows a trail blazed down south: since 2018, <strong style="color:var(--gold)">Camino Charities</strong> has presented over a million dollars to Oklahoma nonprofits, anchored by the annual Camino Charity Shoot — five years of squads on the clay course, every dollar to one local cause.</p>
+        <p class="camino-kicker">"Same team, same formula, different river — one day, one community, every dollar local."</p>
+        <p class="camino-note">Counted on Camino's books, not ours — cut from the same cloth.</p>
+        <br>
+        <a href="https://www.caminocharities.com" target="_blank" class="btn btn-outline">Visit caminocharities.com →</a>
+      </div>
+      <div class="reveal camino-stats" style="transition-delay:.15s">
+        <div class="about-stat"><div class="about-stat-val">$1,060,682</div><div class="about-stat-lbl">Total Camino outreach since 2018</div></div>
+        <div class="about-stat"><div class="about-stat-val">5 Shoots</div><div class="about-stat-lbl">Annual Camino Charity Shoot · $851,533 raised on the range</div></div>
+        <div class="about-stat"><div class="about-stat-val">$178,547</div><div class="about-stat-lbl">2026 · Youth &amp; Family Services of Oklahoma</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -642,6 +675,7 @@
         <li><a href="#sponsors">Sponsors</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#beneficiary">Hope Center</a></li>
+        <li><a href="#camino">Camino Charities</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="https://wyohopecenter.org" target="_blank">wyohopecenter.org</a></li>
       </ul>
